@@ -29,13 +29,25 @@
 				<h2 class="products-title">Ingresar</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario de login. <br>
-			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos <br>
-			Eliminen estás líneas y coloquen el formulario. <br>
-			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
-			////////////////
+			<h2 class="col-12">
+				<form action="/routes/users.js" method="GET">
+					<div>
+						<label for="User:"></label>
+						<input id=”email” type=”email” name=”” value=””> 
+					</div>
+					<div>
+						<label for="Password:"></label>
+						<input id=”password” type=”password” name=”” value=””> 
+					</div>
+					<div>
+						<label for="checkbox:"></label>
+						<input id=”checkbox” type=”checkbox” name=”” value=”recordarme”>
+					</div>
+					 <div>
+						<button type=”submit”>Submit</button> 
+					 </div>
+				</form>
 			</h2>
-
 
 	<!-- footer -->
 	<%- include('partials/footer') %>
