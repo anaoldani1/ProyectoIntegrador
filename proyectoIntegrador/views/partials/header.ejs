@@ -37,7 +37,7 @@
 			<ul class="right-navbar"> 
                 <!-- aca creo un if para las dos opciones: si el usuario esta logueado o no, esto es porque en el codigo base dado en algunas del header decia solo logueado o solo deslogueado, y para que el header sea el mismo de todos creo eso -->
 				<% if (estaLogueado) { %>
-					<li><a href="/profile"><%= usuario.nombre %> <i class="fas fa-user"></i></a></li>
+					<li><a href="/profile"><%=datos.usuario%> <i class="fas fa-user"></i></a></li>
 					<li>
 						<form action="/logout" method="POST">
 							<button class="logout" type="submit">Cerrar sesión <i class="fas fa-sign-in-alt"></i></button>
