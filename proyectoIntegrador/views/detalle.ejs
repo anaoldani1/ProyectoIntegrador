@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalle del Producto</title>
-</head>
-<body>
-    <h1>Detalle del Producto</h1>
-    <p>Nombre: <%= producto.nombre %></p>
-    <p>Precio: <%= producto.precio %></p>
-    <img src="/images/<%= producto.imagen %>" alt="Imagen del producto">
-</body>
-</html>
+
+
+<% if (detalle) { %>
+    <h1><%= detalle.nombre %></h1>
+    <img src="/images/<%= detalle.imagen %>" alt="<%= detalle.nombre %>" width="300px">
+    <p>Precio: $<%= detalle.precio %></p>
+    <p>Descripción: <%= detalle.descripcion %></p>
+<% } else { %>
+    <h1>Producto no encontrado</h1>
+<% } %>
