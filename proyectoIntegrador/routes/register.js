@@ -6,3 +6,4 @@ var router = express.Router();
    // res.render("register");
 ///  });
 
+module.exports = router;

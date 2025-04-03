@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="./images/logo-mercado-liebre.jpg" />
+	<link width="" rel="shortcut icon" href="/images/logo-mercado-liebre.jpg" />
 
 	<title> Mercado Liebre Argentina</title>
 	<!-- Font Awesome Stylesheet -->
@@ -18,8 +18,7 @@
 
 <body>
 	<!-- Header -->
-		<!-- El codigo de header lo pase a partials para poder reutilizarlo y aca lo borre y deje esto -->
-		<%- include('./partials/header') %>
+	<%- include('./partials/headerLogueado') %>  
 	<!-- /Header -->
 
 	<!-- Novedades -->
@@ -31,7 +30,7 @@
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12"> 
 			<!-- cree el form de Agregar un producto -->
-			<form action="./product-add.ejs" method="get">
+			<form action="/productadd" method="get">
 				<div>
 					<label for="imagen">Imagen:</label>
 					<input type="file" id="imagen" name="imagen" required>
