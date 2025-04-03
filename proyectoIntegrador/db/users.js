@@ -5,4 +5,5 @@ const usuario = {
     fechaNacimiento: "10/01/2006",
     documento: 11111111,
     fotoPerfil: "fotoPerfil.png"   
-}
+};
+module.exports = usuario;

@@ -476,6 +476,10 @@ textarea.form-input {
   color: #fff;
 }
 
+/*====== search-results ======*/
+/* div.resultadosBusquedaEstatico{
+
+} */
 
 /*====== Media-Queries ======*/
 @media (min-width: 768px) {
@@ -528,3 +532,4 @@ textarea.form-input {
     margin: auto;
   }
 }
+
