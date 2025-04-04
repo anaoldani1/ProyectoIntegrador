@@ -9,7 +9,7 @@
  
 //  module.exports = productController;
 
-const products = require('../db/products'); // Importamos la lista de productos
+const products = require('../db/informacion'); // Importamos la lista de productos
 
 const productController = {
     index: function(req, res){
