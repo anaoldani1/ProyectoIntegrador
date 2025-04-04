@@ -9,6 +9,8 @@ const searchResultsController = {
             estaLogueado: estaLogueado, 
             usuario: usuario 
         });
+
+        
     }
 };
 
