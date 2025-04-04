@@ -11,8 +11,8 @@ const informacion = {
         {
             id: 1,
             nombre: "Ferrari",
-            imagen: "",
-            precio: 1200000000,
+            imagen: "images/products/ferrari.jpg",
+            precio: 950000000,
             descripcion: "Auto Ferrari"
 
         },
@@ -27,26 +27,68 @@ const informacion = {
         {
             id: 3,
             nombre: "mercedes",
-            imagen: "",
+            imagen: "images/products/mercedes.jpg",
             precio: 870000000,
             descripcion: "Auto mercedes"
 
         },
         {
             id: 4,
-            nombre: "Red Bull Racing",
-            imagen: "",
-            precio: 870000000,
-            descripcion: "Auto Red Bull Racing"
+            nombre: "Red Bull",
+            imagen: "images/products/red-bull.jpg",
+            precio: 860000000,
+            descripcion: "Auto Red Bull"
 
         },
         {
             id: 5,
-            nombre: "Red Bull Racing",
-            imagen: "",
-            precio: 870000000,
-            descripcion: "Auto Red Bull Racing"
+            nombre: "Haas",
+            imagen: "images/products/haas.jpg",
+            precio: 50000000,
+            descripcion: "Auto Haas"
 
+        },
+        {
+            id: 6,
+            nombre: "Aston Martin",
+            imagen: "images/products/aston-martin.jpg",
+            precio: 820000000,
+            descripcion: "Aston Martin"
+
+        },
+        {
+            id: 7,
+            nombre: "Kick Sauber",
+            imagen: "images/products/kick-sauber.jpg",
+            precio: 70000000,
+            descripcion: "Kick Sauber"
+
+        },
+        {
+            id: 8,
+            nombre: "Racing Bulls",
+            imagen: "images/products/racing-bulls.jpg",
+            precio: 840000000,
+            descripcion: "Racing Bulls"
+
+        },
+        {
+            id: 9,
+            nombre: "Alpine",
+            imagen: "images/products/alpine.jpg",
+            precio: 830000000,
+            descripcion: "Alpine"
+
+
+        },
+        {
+            id: 10,
+            nombre: "Williams",
+            imagen: "images/products/wiliams.jpg",
+            precio: 790000000,
+            descripcion: "Williams"
+
+            
         },
     ],
     filtrarPorSearch: function(busqueda){

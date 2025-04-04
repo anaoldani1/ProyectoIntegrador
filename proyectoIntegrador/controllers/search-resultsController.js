@@ -7,9 +7,7 @@ const searchResultsController = {
 
         return res.render("search-results", { 
             estaLogueado: estaLogueado, 
-            producto0: informacion.productos[0],
-            producto1: informacion.productos[1],
-            producto2: informacion.productos[2]
+            productos: informacion.productos
 
         });
 
