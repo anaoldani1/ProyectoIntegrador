@@ -4,6 +4,7 @@ let productAddController = {
     index: function(req, res){
         return res.render('product-add', // la envio a productadd.ejs para que pueda renderizarse
             {productos: informacion.productos,
+                usuario: informacion.usuarios
         })
     },
 }

@@ -7,7 +7,8 @@ const indexController = {
 
         return res.render("index", { 
             estaLogueado: estaLogueado, 
-            usuario: informacion.usuarios 
+            usuario: informacion.usuarios, 
+            productos: informacion.productos,
         });
     }
 };
