@@ -1,3 +1,5 @@
+const usuario = require('../db/users');
+
 const indexController = {
     index: function (req, res) {
         var estaLogueado = true; // Cámbialo a true si el usuario está logueado

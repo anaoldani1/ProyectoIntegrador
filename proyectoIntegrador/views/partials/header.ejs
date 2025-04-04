@@ -11,7 +11,7 @@
 			</div>
 
 			<div class="col-7 col-md-6">
-				<form action="/views/search-results.ejs" method="post" class="search-form">
+				<form action="/searchresults" method="post" class="search-form">
 					<input type="text" name="search" placeholder="Buscar productos, marcas y más" class="search-form_input">
 					<button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
 				</form>
@@ -35,6 +35,7 @@
 			</ul>
 
 			<ul class="right-navbar"> 
+				
                 <!-- aca creo un if para las dos opciones: si el usuario esta logueado o no, esto es porque en el codigo base dado en algunas del header decia solo logueado o solo deslogueado, y para que el header sea el mismo de todos creo eso -->
 				<% if (estaLogueado && usuario) { %>
 					<li><a href="/profile"><%= usuario.nombre %> <i class="fas fa-user"></i></a></li>
