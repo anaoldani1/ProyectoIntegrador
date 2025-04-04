@@ -112,5 +112,6 @@ const informacion = {
         }
     }
     }
+    
 
 module.exports = informacion;
