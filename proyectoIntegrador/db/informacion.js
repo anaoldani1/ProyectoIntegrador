@@ -1,5 +1,3 @@
-
-
 const informacion = {
     usuarios: {
         email: "pepeluis1@gmail.com",
