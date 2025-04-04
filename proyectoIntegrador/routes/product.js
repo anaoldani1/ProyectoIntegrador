@@ -12,7 +12,7 @@ var router = express.Router();
 var productController = require('../controllers/productController');
 
 // Ruta para ver el detalle del producto con un ID dinámico
-router.get('/detalle/:id', productController.detalle);
+router.get('/', productController.index);
 
 module.exports = router;
 

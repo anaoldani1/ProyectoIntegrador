@@ -1,10 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detalle</title>
+</head>
+<body>
+    <!--- falta header-->
+    <% if (detalle) { %>
+        <h1><%= detalle.nombre %></h1>
+        <img src="/images/<%= detalle.imagen %>" alt="<%= detalle.nombre %>" width="300px">
+        <p>Precio: $<%= detalle.precio %></p>
+        <p>Descripción: <%= detalle.descripcion %></p>
+    <% } else { %>
+        <h1>Producto no encontrado</h1>
+    <% } %>
+    <!--- falta footer-->
+</body>
+</html>
 
-
-<% if (detalle) { %>
-    <h1><%= detalle.nombre %></h1>
-    <img src="/images/<%= detalle.imagen %>" alt="<%= detalle.nombre %>" width="300px">
-    <p>Precio: $<%= detalle.precio %></p>
-    <p>Descripción: <%= detalle.descripcion %></p>
-<% } else { %>
-    <h1>Producto no encontrado</h1>
-<% } %>
+<
