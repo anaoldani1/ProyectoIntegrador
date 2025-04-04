@@ -1,22 +1,21 @@
-///const productos = require("../db/products");
- 
-///const productController = {
-//      detalle: function (req, res) {
-//          const producto = productos[0];
-//          res.render("detalle", { producto });
-//      }
-//  };
- 
-//  module.exports = productController;
-
-const products = require('../db/informacion'); // Importamos la lista de productos
-
-const productController = {
-    index: function(req, res){
-        return res.render('product', 
-            {datos: products,
-        })
+////PARTE DE DETALLE--> 10
+const informacion = require("../db/informacion")
+const productController= {
+    index: function(req,res) {
+        return res.render("product", {
+            info: informacion.productos
+        }) 
     },
-};
 
-module.exports = productController;
+    filtrarId: function (req,res) {
+        let idBuscado= req.params.id;
+        let ObjAnswer= informacion.filtrarId(idBuscado)
+
+        return res.render("product",
+        {
+            detalle: ObjAnswer
+        })
+    }
+}
+
+module.exports= productController
