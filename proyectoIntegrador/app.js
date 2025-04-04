@@ -11,7 +11,6 @@ var profileRouter = require("./routes/profile");
 var registerRouter = require("./routes/register");
 var searchResultsRouter = require("./routes/search-results");
 var productAddRouter = require('./routes/productadd')
-var detalleRouter = require('./routes/detalle')
 
 var app = express();
 
@@ -32,7 +31,6 @@ app.use('/profile', profileRouter);
 app.use('/register', registerRouter);
 app.use('/searchresults', searchResultsRouter);
 app.use('/productadd', productAddRouter);
-app.use('/detalle', detalleRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
