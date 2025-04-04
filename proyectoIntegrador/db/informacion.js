@@ -84,9 +84,9 @@ const informacion = {
         {
             id: 10,
             nombre: "Williams",
-            imagen: "wiliams.jpg",
+            imagen: "williams.jpg",
             precio: 790000000,
-            descripcion: "Williams"
+            descripcion: "williams"
 
             
         },
