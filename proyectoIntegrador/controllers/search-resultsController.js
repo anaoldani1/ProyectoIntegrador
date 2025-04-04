@@ -1,4 +1,4 @@
-const usuario = require('../db/users')
+const producto = require('../db/products')
 
 const searchResultsController = {
     index: function (req, res) {
