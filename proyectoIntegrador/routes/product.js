@@ -14,5 +14,7 @@ var productController = require('../controllers/productController');
 // Ruta para ver el detalle del producto con un ID dinámico
 router.get('/', productController.index);
 
+
+
 module.exports = router;
 

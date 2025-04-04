@@ -1,9 +1,9 @@
-const products = require('../db/informacion') //requiero la informacion sobre productos
+const informacion = require('../db/informacion') //requiero la informacion sobre productos
 
 let productAddController = {
     index: function(req, res){
         return res.render('product-add', // la envio a productadd.ejs para que pueda renderizarse
-            {datos: products,
+            {productos: informacion.productos,
         })
     },
 }
