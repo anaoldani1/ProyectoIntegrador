@@ -11,6 +11,9 @@
 
 
 
+<<<<<<< HEAD
+module.exports = router;
+=======
 // var express = require('express');
 // var router = express.Router();
 // var productController = require('../controllers/productController');
@@ -19,4 +22,5 @@
 // router.get('/', productController.index);
 
 // module.exports = router;
+>>>>>>> 02dc48b57afa0139e824e89534e36e252a4fab45
 

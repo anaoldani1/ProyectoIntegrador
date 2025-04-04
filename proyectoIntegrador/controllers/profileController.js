@@ -3,7 +3,7 @@ const informacion = require('../db/informacion') // traigo el objeto literal con
 const profileController = {
     index: function(req, res){
         return res.render('profile', // envio los datos a profile.ejs para renderizarlos
-            {usuario: informacion.usuario, 
+            {usuario: informacion.usuarios, 
         })
     },
 }
