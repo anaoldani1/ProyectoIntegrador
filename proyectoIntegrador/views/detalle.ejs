@@ -1,10 +1,8 @@
-
-
 <% if (detalle) { %>
     <h1><%= detalle.nombre %></h1>
-    <img src="/images/<%= detalle.imagen %>" alt="<%= detalle.nombre %>" width="300px">
-    <p>Precio: $<%= detalle.precio %></p>
-    <p>Descripción: <%= detalle.descripcion %></p>
+    <img src="<%= detalle.imagen %>" alt="<%= detalle.nombre %>">
+    <p><%= detalle.descripcion %></p>
 <% } else { %>
     <h1>Producto no encontrado</h1>
 <% } %>
+
