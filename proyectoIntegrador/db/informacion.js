@@ -31,6 +31,19 @@ const informacion = {
             descripcion: "Mouse ergonómico para gaming."
         }
     ],
+    filtrarPorId: function(busqueda){
+        let listaBusqueda=[]
+        for (let index = 0; index < this.productos.length; index++) {
+            const element = this.productos[index];
+
+            if (toLowerCase(busqueda) in toLowerCase(element.nombre)) {
+                listaBusqueda.push(element)
+                
+            }
+        return listaBusqueda
+            
+        }
+    }
     }
 
 

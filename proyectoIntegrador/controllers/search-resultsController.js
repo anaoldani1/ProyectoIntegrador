@@ -1,4 +1,4 @@
-const producto = require('../db/informacion')
+const informacion = require('../db/informacion')
 
 const searchResultsController = {
     index: function (req, res) {
@@ -7,11 +7,18 @@ const searchResultsController = {
 
         return res.render("search-results", { 
             estaLogueado: estaLogueado, 
-            usuario: usuario 
+            producto0: informacion.productos[0],
+            producto1: informacion.productos[1],
+            producto2: informacion.productos[2]
+
         });
 
-        
+
+    },
+    results: function (req,res) {
+
     }
+
 };
 
 
