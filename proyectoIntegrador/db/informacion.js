@@ -10,28 +10,88 @@ const informacion = {
     productos: [
         {
             id: 1,
-            nombre: "Notebook HP",
-            imagen: "default-image.png",
-            precio: 120000,
-            descripcion: "Notebook HP de última generación."
+            nombre: "Ferrari",
+            imagen: "images/products/ferrari.jpg",
+            precio: 950000000,
+            descripcion: "Auto Ferrari"
 
         },
         {
             id: 2,
-            nombre: "Auriculares Sony",
-            imagen: "auriculares.jpg",
-            precio: 25000,
-            descripcion: "Auriculares Sony con cancelación de ruido."
+            nombre: "mclaren",
+            imagen: "images/products/mclaren.jpg",
+            precio: 990000000,
+            descripcion: "Auto mclaren"
+
         },
         {
             id: 3,
-            nombre: "Mouse Logitech",
-            imagen: "mouse.jpg",
-            precio: 8000,
-            descripcion: "Mouse ergonómico para gaming."
-        }
+            nombre: "mercedes",
+            imagen: "images/products/mercedes.jpg",
+            precio: 870000000,
+            descripcion: "Auto mercedes"
+
+        },
+        {
+            id: 4,
+            nombre: "Red Bull",
+            imagen: "images/products/red-bull.jpg",
+            precio: 860000000,
+            descripcion: "Auto Red Bull"
+
+        },
+        {
+            id: 5,
+            nombre: "Haas",
+            imagen: "images/products/haas.jpg",
+            precio: 50000000,
+            descripcion: "Auto Haas"
+
+        },
+        {
+            id: 6,
+            nombre: "Aston Martin",
+            imagen: "images/products/aston-martin.jpg",
+            precio: 820000000,
+            descripcion: "Aston Martin"
+
+        },
+        {
+            id: 7,
+            nombre: "Kick Sauber",
+            imagen: "images/products/kick-sauber.jpg",
+            precio: 70000000,
+            descripcion: "Kick Sauber"
+
+        },
+        {
+            id: 8,
+            nombre: "Racing Bulls",
+            imagen: "images/products/racing-bulls.jpg",
+            precio: 840000000,
+            descripcion: "Racing Bulls"
+
+        },
+        {
+            id: 9,
+            nombre: "Alpine",
+            imagen: "images/products/alpine.jpg",
+            precio: 830000000,
+            descripcion: "Alpine"
+
+
+        },
+        {
+            id: 10,
+            nombre: "Williams",
+            imagen: "images/products/wiliams.jpg",
+            precio: 790000000,
+            descripcion: "Williams"
+
+            
+        },
     ],
-    filtrarPorId: function(busqueda){
+    filtrarPorSearch: function(busqueda){
         let listaBusqueda=[]
         for (let index = 0; index < this.productos.length; index++) {
             const element = this.productos[index];

@@ -4,6 +4,7 @@ const profileController = {
     index: function(req, res){
         return res.render('profile', // envio los datos a profile.ejs para renderizarlos
             {usuario: informacion.usuarios, 
+            productos:  informacion.productos
         })
     },
 }
