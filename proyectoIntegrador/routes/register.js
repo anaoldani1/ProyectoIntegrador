@@ -1,9 +1,7 @@
 var express = require('express');
 var router = express.Router();
-///let userController = require('../controllers/userController')
+let registerController = require('../controllers/registerController')
 
-// router.get("/register", function(req, res) {
-   // res.render("register");
-///  });
+router.get('/', registerController.index);
 
 module.exports = router;
