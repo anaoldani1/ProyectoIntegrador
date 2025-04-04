@@ -1,4 +1,4 @@
-const usuario = require('../db/users')
+const usuario = require('../db/informacion')
 
 const loginController = {
     index: function(req, res){
