@@ -11,7 +11,7 @@ var loginRouter = require("./routes/login");
 var profileRouter = require("./routes/profile");
 var registerRouter = require("./routes/register");
 var searchResultsRouter = require("./routes/search-results");
-var productAddRouter = require('./routes/product-add')
+var productAddRouter = require('./routes/productadd')
 var detalleRouter = require('./routes/detalle')
 
 var app = express();

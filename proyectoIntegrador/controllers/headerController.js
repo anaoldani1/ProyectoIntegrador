@@ -1,11 +1,11 @@
 const usuario = require('../db/users')
 
-const loginController = {
+const headerController = {
     index: function(req, res){
-        return res.render('login', 
+        return res.render('headerLogueado', 
             {datos: usuario,
         })
     },
-};
+}
 
-module.exports = loginController;
+module.exports = headerController;
