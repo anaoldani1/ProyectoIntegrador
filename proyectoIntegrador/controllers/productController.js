@@ -1,4 +1,5 @@
 ////PARTE DE DETALLE--> 10
+
 const informacion = require("../db/informacion")
 const productController= {
     index: function(req,res) {

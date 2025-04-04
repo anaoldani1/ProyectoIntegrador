@@ -7,7 +7,7 @@
     <title>detalle</title>
 </head>
 <body>
-    <!--- falta header-->
+    <%- include('./partials/header') %> 
     <% if (detalle) { %>
         <h1><%= detalle.nombre %></h1>
         <img src="/images/<%= detalle.imagen %>" alt="<%= detalle.nombre %>" width="300px">
@@ -16,7 +16,7 @@
     <% } else { %>
         <h1>Producto no encontrado</h1>
     <% } %>
-    <!--- falta footer-->
+    <%- include('./partials/footer') %>
 </body>
 </html>
 

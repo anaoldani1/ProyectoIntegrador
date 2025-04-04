@@ -28,9 +28,9 @@
 // module.exports = detalleController;
 
 
+
 ////PARTE DE DETALLE--> 10
 const informacion = require("../db/informacion")
-const productos= require("../db/informacion")
 const detalleController= {
     index: function(req,res) {
         return res.render("detalle", {
