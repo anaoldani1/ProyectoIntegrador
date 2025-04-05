@@ -6,7 +6,6 @@ const indexController = {
        var usuario = null; // Asegurar que usuario siempre exista
 
         return res.render("index", { 
-            estaLogueado: estaLogueado, 
             usuario: informacion.usuarios, 
             productos: informacion.productos,
         });
