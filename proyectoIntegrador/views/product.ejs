@@ -36,50 +36,19 @@
 						<%=detalle.descripcion%></p>
 				</article>
 				<div class="col-12 col-lg-4">
-					<section class="comments">
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-								<strong> <a href="/profile"> <%= detalle.nombre%>: </a> </strong>
-								 Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora doloribus enim aspernatur fugit corrupti suscipit sit dolore magnam, praesentium explicabo inventore molestias facilis labore. Fugit ipsa mollitia odit inventore consequuntur.</p>
-							</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="/profile"><%= detalle.nombre%>: </a> </strong>
-									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur.</p>
-							</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="/profile"><%= detalle.nombre%>: </a> </strong>
-									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur adipisicing elit.
+				<!-- aca hago lo de comentarios de detalle -->
+					<section class="comments">  
+						<% for (let i = 0; i < comentarios.length; i++) { %>
+							<article>
+								<img src="<%= comentarios[i].fotoUsuario %>" alt="">
+								<div class="data">
+									<p class="user">
+										<strong><a href="/profile"><%= comentarios[i].nombreUsuario %>:</a></strong>
+										<%= comentarios[i].comentario %>
 									</p>
-							</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="/profile"><%= detalle.nombre%>: </a> </strong>
-									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet.</p>
-							</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="/profile"><%= detalle.nombre%>: </a> </strong>
-									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Tempora doloribus enim aspernatur fugit corrupti suscipit sit dolore</p>
-							</div>
-						</article>
-
+								</div>
+							</article>
+						<% } %>
 					</section>
 					<form class="form" action="" method="POST">
 						<input class="form-input" type="text" value="" placeholder="Agregar comentario">

@@ -12,11 +12,17 @@ const productController= {
         let idBuscado= req.params.id;
         let ObjAnswer= informacion.filtrarId(idBuscado)
 
+        
+
+        
         return res.render("product",
         {
-            detalle: ObjAnswer
+            detalle: ObjAnswer,
+            comentarios: informacion.comentarios
         })
     }
+
+
 }
 
 module.exports = productController;

@@ -11,7 +11,7 @@ const informacion = {
         {
             id: 1,
             nombre: "Ferrari",
-            imagen: "images/products/ferrari.jpg",
+            imagen: "ferrari.jpg",
             precio: 950000000,
             descripcion: "Auto Ferrari"
 
@@ -19,7 +19,7 @@ const informacion = {
         {
             id: 2,
             nombre: "mclaren",
-            imagen: "images/products/mclaren.jpg",
+            imagen: "mclaren.jpg",
             precio: 990000000,
             descripcion: "Auto mclaren"
 
@@ -27,7 +27,7 @@ const informacion = {
         {
             id: 3,
             nombre: "mercedes",
-            imagen: "images/products/mercedes.jpg",
+            imagen: "mercedes.jpg",
             precio: 870000000,
             descripcion: "Auto mercedes"
 
@@ -35,7 +35,7 @@ const informacion = {
         {
             id: 4,
             nombre: "Red Bull",
-            imagen: "images/products/red-bull.jpg",
+            imagen: "red-bull.jpg",
             precio: 860000000,
             descripcion: "Auto Red Bull"
 
@@ -43,7 +43,7 @@ const informacion = {
         {
             id: 5,
             nombre: "Haas",
-            imagen: "images/products/haas.jpg",
+            imagen: "haas.jpg",
             precio: 50000000,
             descripcion: "Auto Haas"
 
@@ -51,46 +51,48 @@ const informacion = {
         {
             id: 6,
             nombre: "Aston Martin",
-            imagen: "images/products/aston-martin.jpg",
+            imagen: "aston-martin.jpg",
             precio: 820000000,
-            descripcion: "Aston Martin"
+            descripcion: "Auto Aston Martin"
 
         },
         {
             id: 7,
             nombre: "Kick Sauber",
-            imagen: "images/products/kick-sauber.jpg",
+            imagen: "kick-sauber.jpg",
             precio: 70000000,
-            descripcion: "Kick Sauber"
+            descripcion: "Auto Kick Sauber"
 
         },
         {
             id: 8,
             nombre: "Racing Bulls",
-            imagen: "images/products/racing-bulls.jpg",
+            imagen: "racing-bulls.jpg",
             precio: 840000000,
-            descripcion: "Racing Bulls"
+            descripcion: "Auto Racing Bulls"
 
         },
         {
             id: 9,
             nombre: "Alpine",
-            imagen: "images/products/alpine.jpg",
+            imagen: "alpine.jpg",
             precio: 830000000,
-            descripcion: "Alpine"
+            descripcion: "Auto Alpine"
 
 
         },
         {
             id: 10,
             nombre: "Williams",
-            imagen: "images/products/wiliams.jpg",
+            imagen: "williams.jpg",
             precio: 790000000,
-            descripcion: "Williams"
+            descripcion: "Auto williams"
 
             
-        },
-        comentarios= [
+        }
+    ],
+        
+        comentarios: [
                 {
                     nombreUsuario: "brian123",
                     fotoUsuario: "/images/users/default-image.png",
@@ -141,9 +143,9 @@ const informacion = {
                     fotoUsuario: "/images/users/default-image.png",
                     comentario: "Yo tuve uno similar y era una joya."
                 }
-            ] 
-    ],
-    
+            ] ,
+
+    // esto es para mas adelante search, no se usa en esta entrega
     filtrarPorSearch: function(busqueda){
         let listaBusqueda=[]
         for (let index = 0; index < this.productos.length; index++) {
@@ -158,13 +160,14 @@ const informacion = {
         }},
 
 
-    /////esto es para detalle--> punto 10, detalle estatico
+    /////esto es para detalle
     filtrarId: function (id) {
-        if(informacion.productos[0].id==id){
-            return informacion.productos[0]
+        if(this.productos[0].id==id){
+            return this.productos[0]
         }
     }
     }
     
 
 module.exports = informacion;
+
