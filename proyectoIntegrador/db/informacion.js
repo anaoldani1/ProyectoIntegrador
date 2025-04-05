@@ -109,7 +109,7 @@ const informacion = {
                     comentario: "¡Se ve espectacular! ¿Qué año es?"
                 },
                 {
-                    nombreUsuario: "carlos87",
+                    nombreUsuario: "nicky87",
                     fotoUsuario: "/images/users/default-image.png",
                     comentario: "No me convence el color, pero seguro es rápido."
                 },
