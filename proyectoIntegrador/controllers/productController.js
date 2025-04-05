@@ -12,7 +12,7 @@ const productController= {
         let idBuscado= req.params.id;
         let ObjAnswer= informacion.filtrarId(idBuscado)
 
-        let comentariosFiltrados= [ ]; ////creo un array vacio para guardar los comentarios 
+        
 
         
         return res.render("product",
