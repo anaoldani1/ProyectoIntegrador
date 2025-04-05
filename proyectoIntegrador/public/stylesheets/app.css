@@ -15,10 +15,10 @@
 
 /* NOMBRE DEL SITIO */
 .nombre-sitio{
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 30px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 35px;
   color: red;
-  
+
 }
 
 /*====== Basics ======*/
@@ -36,7 +36,8 @@ body {
 body {
   font-family: var(--base-font-family);
   font-weight: 300;
-  background-color: var(--light-gray);
+  background-color: black;
+  color: white;
 }
 
 ul,
@@ -49,7 +50,11 @@ ol {
 a {
   display: inline-block;
   text-decoration: none;
-  color: inherit;
+  color: red;
+}
+
+.comments{
+  color: black
 }
 
 figure {
@@ -76,6 +81,7 @@ hr {
 .main-header {
   padding: 15px 0;
   background-color: var(--yellow);
+  color: var(--blanco);
 }
 
 .main-header_home-link,
