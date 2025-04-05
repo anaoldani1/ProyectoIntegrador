@@ -143,7 +143,7 @@ const informacion = {
                 }
             ] 
     ],
-    
+    // esto es para mas adelante search, no se usa en esta entrega
     filtrarPorSearch: function(busqueda){
         let listaBusqueda=[]
         for (let index = 0; index < this.productos.length; index++) {
