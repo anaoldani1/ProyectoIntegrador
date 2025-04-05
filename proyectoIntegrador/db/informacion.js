@@ -89,8 +89,10 @@ const informacion = {
             descripcion: "Auto williams"
 
             
-        },
-        comentarios= [
+        }
+    ],
+        
+        comentarios: [
                 {
                     nombreUsuario: "brian123",
                     fotoUsuario: "/images/users/default-image.png",
@@ -141,8 +143,8 @@ const informacion = {
                     fotoUsuario: "/images/users/default-image.png",
                     comentario: "Yo tuve uno similar y era una joya."
                 }
-            ] 
-    ],
+            ] ,
+
     // esto es para mas adelante search, no se usa en esta entrega
     filtrarPorSearch: function(busqueda){
         let listaBusqueda=[]
@@ -158,13 +160,14 @@ const informacion = {
         }},
 
 
-    /////esto es para detalle--> punto 10, detalle estatico
+    /////esto es para detalle
     filtrarId: function (id) {
-        if(informacion.productos[0].id==id){
-            return informacion.productos[0]
+        if(this.productos[0].id==id){
+            return this.productos[0]
         }
     }
     }
     
 
 module.exports = informacion;
+
