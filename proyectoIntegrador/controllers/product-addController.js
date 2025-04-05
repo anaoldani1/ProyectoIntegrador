@@ -2,9 +2,9 @@ const informacion = require('../db/informacion') //requiero la informacion sobre
 
 let productAddController = {
     index: function(req, res){
-        return res.render('product-add', // la envio a productadd.ejs para que pueda renderizarse
-            {productos: informacion.productos,
-                usuario: informacion.usuarios
+        return res.render('product-add', {// la envio a productadd.ejs para que pueda renderizarse
+            productos: informacion.productos,
+            usuario: informacion.usuarios
         })
     },
 }
