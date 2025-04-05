@@ -53,7 +53,7 @@ const informacion = {
             nombre: "Aston Martin",
             imagen: "aston-martin.jpg",
             precio: 820000000,
-            descripcion: "Aston Martin"
+            descripcion: "Auto Aston Martin"
 
         },
         {
@@ -61,7 +61,7 @@ const informacion = {
             nombre: "Kick Sauber",
             imagen: "kick-sauber.jpg",
             precio: 70000000,
-            descripcion: "Kick Sauber"
+            descripcion: "Auto Kick Sauber"
 
         },
         {
@@ -69,7 +69,7 @@ const informacion = {
             nombre: "Racing Bulls",
             imagen: "racing-bulls.jpg",
             precio: 840000000,
-            descripcion: "Racing Bulls"
+            descripcion: "Auto Racing Bulls"
 
         },
         {
@@ -77,7 +77,7 @@ const informacion = {
             nombre: "Alpine",
             imagen: "alpine.jpg",
             precio: 830000000,
-            descripcion: "Alpine"
+            descripcion: "Auto Alpine"
 
 
         },
@@ -86,7 +86,7 @@ const informacion = {
             nombre: "Williams",
             imagen: "williams.jpg",
             precio: 790000000,
-            descripcion: "williams"
+            descripcion: "Auto williams"
 
             
         },
