@@ -180,6 +180,291 @@ null,
 5
 );
 
+CREATE TABLE comentarios (
+id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+productosId INT UNSIGNED,
+usuariosId INT UNSIGNED,
+comentario TEXT,
+createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+deletedAt  TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP, 
+FOREIGN KEY (productosId) REFERENCES productos(id),
+FOREIGN KEY (usuariosId) REFERENCES usuarios(id)
+);
+
+INSERT INTO comentarios VALUES (
+DEFAULT, 
+1, 
+1, 
+"¡Increíble Ferrari!", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+1, 
+2, 
+"Me encanta el diseño.", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+1, 
+3, 
+"¿Es nuevo o usado?", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+2, 
+2, 
+"Muy buen estado.", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+2, 
+3, 
+"El color negro le queda excelente.", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+2, 
+4, 
+"¿Se puede financiar?", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+3,
+1, 
+"Me gusta este modelo.", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+3, 
+4, 
+"Siempre quise un Mustang.", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+3, 
+5, 
+"¿Cuál es el kilometraje?", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+4, 
+2, 
+"Muy elegante.", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+4, 
+3, 
+"El marrón le da un estilo clásico.", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+4, 
+5, 
+"¿Cuánto cuesta?", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+5, 
+1, 
+"Rosa es el nuevo negro.", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+5, 
+3, 
+"Se ve único.", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+5, 
+4, 
+"Interesado. ¿Dónde lo puedo ver?", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+6, 
+2, 
+"Muy buen precio.", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+6, 
+4, 
+"Se ve cómodo para manejar.", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+6, 
+5, 
+"Ideal para la ciudad.", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+7, 
+1, 
+"Rojo pasión, me encanta.", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+7, 
+3, 
+"Mercedes nunca falla.", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+7, 
+5, 
+"Lo quiero para mí.", 
+DEFAULT,
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+8,
+2, 
+"¡Clásico Alfa Romeo!", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+8, 
+4, 
+"Ese azul es hermoso.", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+8, 
+1, 
+"¿Tiene algún daño?", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+9, 
+3, 
+"Siempre soñé con un Audi.", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+9,
+4, 
+"Violeta, wow.", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+9, 
+2, 
+"¿Lo tenés disponible todavía?", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+10, 
+5, 
+"Land Rover es otra liga.", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+10, 
+1, 
+"Perfecto para viajar.", 
+DEFAULT, 
+DEFAULT, 
+NULL
+),
+(
+DEFAULT, 
+10, 
+2, 
+"¿Cuál es el consumo?", 
+DEFAULT, 
+DEFAULT, 
+NULL
+);
+
+
+
 
 
 
