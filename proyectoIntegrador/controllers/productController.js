@@ -11,9 +11,6 @@ const productController= {
     filtrarId: function (req,res) {
         let idBuscado= req.params.id;
         let ObjAnswer= informacion.filtrarId(idBuscado)
-
-        
-
         
         return res.render("product",
         {
