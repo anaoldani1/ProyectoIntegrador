@@ -196,7 +196,7 @@ INSERT INTO comentarios VALUES (
 DEFAULT, 
 1, 
 1, 
-"¡Increíble Ferrari!", 
+"¡Increíble!", 
 NULL, 
 NULL, 
 NULL
@@ -232,7 +232,7 @@ NULL
 DEFAULT, 
 2, 
 3, 
-"El color negro le queda excelente.", 
+"El color le queda excelente.", 
 NULL, 
 NULL, 
 NULL
@@ -259,7 +259,7 @@ NULL
 DEFAULT, 
 3, 
 4, 
-"Siempre quise un Mustang.", 
+"Siempre quise uno.", 
 NULL, 
 NULL, 
 NULL
@@ -286,7 +286,7 @@ NULL
 DEFAULT, 
 4, 
 3, 
-"El marrón le da un estilo clásico.", 
+"El color le da un estilo clásico.", 
 NULL, 
 NULL, 
 NULL
@@ -304,7 +304,7 @@ NULL
 DEFAULT, 
 5, 
 1, 
-"Rosa es el nuevo negro.", 
+"el color es el nuevo negro.", 
 NULL, 
 NULL, 
 NULL
@@ -358,7 +358,7 @@ NULL
 DEFAULT, 
 7, 
 1, 
-"Rojo pasión, me encanta.", 
+"ese color, me encanta.", 
 NULL, 
 NULL, 
 NULL
@@ -367,7 +367,7 @@ NULL
 DEFAULT, 
 7, 
 3, 
-"Mercedes nunca falla.", 
+"esa marca nunca falla.", 
 NULL, 
 NULL, 
 NULL
@@ -385,7 +385,7 @@ NULL
 DEFAULT, 
 8,
 2, 
-"¡Clásico Alfa Romeo!", 
+"¡Clásico!", 
 NULL, 
 NULL, 
 NULL
@@ -394,7 +394,7 @@ NULL
 DEFAULT, 
 8, 
 4, 
-"Ese azul es hermoso.", 
+"Ese tono es hermoso.", 
 NULL, 
 NULL, 
 NULL
@@ -412,7 +412,7 @@ NULL
 DEFAULT, 
 9, 
 3, 
-"Siempre soñé con un Audi.", 
+"Siempre soñé con uno.", 
 NULL, 
 NULL, 
 NULL
@@ -439,7 +439,7 @@ NULL
 DEFAULT, 
 10, 
 5, 
-"Land Rover es otra liga.", 
+"Esa marca es otra liga.", 
 NULL, 
 NULL, 
 NULL

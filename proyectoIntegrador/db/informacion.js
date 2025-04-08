@@ -86,8 +86,19 @@ const informacion = {
             nombre: "Williams",
             imagen: "williams.jpg",
             precio: 790000000,
-            descripcion: "Auto williams"
-
+            descripcion: "Auto williams",
+            comentarios: [
+                {
+                    nombreUsuario: "brian123",
+                    fotoUsuario: "/images/users/default-image.png",
+                    comentario: "Me encanta este modelo, siempre quise uno."
+                },
+                {
+                    nombreUsuario: "tati123",
+                    fotoUsuario: "/images/users/default-image.png",
+                    comentario: "No es de mi estilo, pero tiene buen diseño."
+                }
+            ]
             
         }
     ],
