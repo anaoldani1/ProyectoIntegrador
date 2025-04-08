@@ -5,7 +5,7 @@ const mainController= require('../controllers/mainController')
 
 
 router.get('/', mainController.index);
-router.get('/search-results', mainController.searchResults);
+router.get('/searchresults', mainController.searchResults);
 
 
 module.exports = router;
