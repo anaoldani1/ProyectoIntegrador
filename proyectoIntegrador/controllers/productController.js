@@ -1,5 +1,4 @@
 ////PARTE DE DETALLE--> 10
-
 const informacion = require("../db/informacion")
 const productController= {
     index: function(req,res) {
@@ -16,6 +15,13 @@ const productController= {
         {
             detalle: ObjAnswer,
             comentarios: informacion.comentarios
+        })
+    },
+
+    add: function(req, res){
+        return res.render("product-add", {// la envio a productadd.ejs para que pueda renderizarse
+            productos: informacion.productos,
+            usuario: informacion.usuarios
         })
     }
 
