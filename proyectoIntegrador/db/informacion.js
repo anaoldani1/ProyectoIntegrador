@@ -6,7 +6,7 @@ const informacion = {
         password: "pepeluis1",
         fechaNacimiento: "10/01/2006",
         documento: 11111111,
-        fotoPerfil: "fotoPerfil.png"   
+        fotoPerfil: "fotoPerfil.jpg"   
     },
     productos: [
         {
