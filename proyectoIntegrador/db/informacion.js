@@ -1,3 +1,4 @@
+///objeto literal con objeto literal (con strings e ints), con array de objetos literales (con ints y strings), objeto literal (con strings e ints), y metodos
 const informacion = {
     usuarios: {
         email: "pepeluis1@gmail.com",
@@ -180,5 +181,5 @@ const informacion = {
     }
     
 
-module.exports = informacion;
+module.exports = informacion; /// exportamos el objeto literal informacion para poder 
 
