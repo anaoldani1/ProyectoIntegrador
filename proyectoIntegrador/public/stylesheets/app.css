@@ -15,9 +15,10 @@
 
 /* NOMBRE DEL SITIO */
 .nombre-sitio{
-  font-family: 'Orbitron', sans-serif;
+  /* font-family: 'Orbitron', sans-serif; */
   font-size: 35px;
   color: red;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
 }
 
@@ -305,12 +306,16 @@ a{
   margin-top: 80px;
 }
 
+.nombresAlumnas{
+  color: black;
+}
+
 .footer-data {
   text-align: center;
 }
 
 .footer-data i {
-  color: var(--light-blue);
+  color: red;
   font-size: 3.5em;
 }
 
