@@ -8,7 +8,7 @@ const informacion = {
         documento: 11111111,
         imagen: "fotoPerfil.jpg"   
     },
-    productos: [
+    productos: [ 
         {
             id: 1,
             nombre: "Ferrari",
@@ -166,5 +166,5 @@ const informacion = {
     }
     
 
-module.exports = informacion; /// exportamos el objeto literal informacion para poder 
+module.exports = informacion; /// exportamos el objeto literal 
 
