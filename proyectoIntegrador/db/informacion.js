@@ -1,4 +1,4 @@
-const informacion = {
+const informacion = { //objeto literal con informacion para luego exportar 
     usuarios: {
         email: "pepeluis1@gmail.com",
         usuario: "pepeluis1",
@@ -7,7 +7,7 @@ const informacion = {
         documento: 11111111,
         fotoPerfil: "fotoPerfil.png"   
     },
-    productos: [
+    productos: [ 
         {
             id: 1,
             nombre: "Ferrari",
@@ -165,5 +165,5 @@ const informacion = {
     }
     
 
-module.exports = informacion;
+module.exports = informacion; // objeto literal exportado
 
