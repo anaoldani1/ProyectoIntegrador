@@ -2,6 +2,7 @@
 const informacion = require("../db/informacion")
 const productController= {
     index: function(req,res) {
+        //envia la informacion de productos a product.ejs para poder renderizarlo, es un array de objetos literales
         return res.render("product", {
             info: informacion.productos
         }) 

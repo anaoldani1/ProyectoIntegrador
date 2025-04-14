@@ -1,4 +1,5 @@
-const informacion = { //objeto literal con informacion para luego exportar 
+///objeto literal con objeto literal (con strings e ints), con array de objetos literales (con ints y strings), objeto literal (con strings e ints), y metodos
+const informacion = {
     usuarios: {
         email: "pepeluis1@gmail.com",
         usuario: "pepeluis1",
@@ -165,5 +166,5 @@ const informacion = { //objeto literal con informacion para luego exportar
     }
     
 
-module.exports = informacion; // objeto literal exportado
+module.exports = informacion; /// exportamos el objeto literal 
 
