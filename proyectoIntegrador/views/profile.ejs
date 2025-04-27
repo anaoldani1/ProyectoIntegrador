@@ -63,11 +63,13 @@
 				<h2 class="products-title">Mis productos</h2>
 			</div>
 			<!-- Show mis productos -->
-			<% for( let i = 0; i < 10; i++ ) { %>
+			<!-- Empieza un bucle que repite el contenido 10 veces. Cada vez cambia el índice i. -->
+			<% for( let i = 0; i < 10; i++ ) { %>  
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
 						<a href="/product/id/1">
 							<figure class="product-box_image">
+								<!-- Muestra la imagen del producto i, usando el nombre de imagen que viene en productos[i].imagen. -->
 								<img src="/images/products/<%= productos[i].imagen %>" alt="cafetera moulinex">
 							</figure>
 							<article class="product-box_data">
