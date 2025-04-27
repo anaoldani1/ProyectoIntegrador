@@ -1,4 +1,5 @@
 ///objeto literal con objeto literal (con strings e ints), con array de objetos literales (con ints y strings), objeto literal (con strings e ints), y metodos
+///info obj literal con 3 propiedades
 const informacion = {
     usuarios: {
         email: "pepeluis1@gmail.com",
@@ -158,6 +159,7 @@ const informacion = {
             ] ,
 
     /////esto es para detalle
+    //es un metodo que recibe un id, compara el q recibio con el de db
     filtrarId: function (id) {
         if(this.productos[0].id==id){
             return this.productos[0]
