@@ -19,9 +19,7 @@ const productController= {
         //envia a product.ejs el resultado que da el metodo filtrarId al darle el id que busca en la ruta, y la informacion de comentarios para poder renderizarlo
         let idBuscado= req.params.id;
         let ObjAnswer= informacion.filtrarId(idBuscado)
-        //Busca un producto específico basado en el id que recibe en la URL (req.params.id)
-        let idBuscado= req.params.id; //Agarra el id que viene en la URL.
-        let ObjAnswer= informacion.filtrarId(idBuscado) //Usa  función que está en informacion.js filtrarId. que busca en la lista cual tiene ese id y lo duvelve
+
         
         return res.render("product",
         {
