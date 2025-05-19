@@ -33,24 +33,30 @@
 		<div class="d-flex align-items-center">
 			<h2 class="products-title">Nombre del producto</h2> 
 			<p class="product-detail-description">
-				<a href="/product/add">Agregar</a>
+				<!-- Link para agregar -->
+				<a href="/product/add">Agregar</a> 
 			</p>
 		</div>
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
+					<!-- muestro la imagen que tiene giardado ESE producto -->
 					<img src="/images/products/<%= detalle.imagen %>" alt="" class="product-detail-img">
 					<p class="product-detail-description">
-						<%=detalle.descripcion%></p>
+						<%=detalle.descripcion%></p> 
 				</article>
 				<div class="col-12 col-lg-4">
 				<!-- aca hago lo de comentarios de detalle -->
 					<section class="comments">  
+						<!-- Recorre el array de comentarios con un bucle. -->
 						<% for (let i = 0; i < comentarios.length; i++) { %>
 							<article>
 								<img src="<%= comentarios[i].fotoUsuario %>" alt="">
 								<div class="data">
 									<p class="user">
+										<!-- Imagen del usuario que comentó.
+										Nombre del usuario que comentó.
+										Texto del comentario. -->
 										<strong><a href="/user/profile"><%= comentarios[i].nombreUsuario %>:</a></strong>
 										<%= comentarios[i].comentario %>
 									</p>

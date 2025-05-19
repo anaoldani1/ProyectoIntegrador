@@ -26,6 +26,7 @@
 
 <body>
 	<!-- Header -->
+	<!-- incluyo el contenido del archivo headerLogueado.ejs, que está dentro de la carpeta partials/. -->
 	<%- include('./partials/headerLogueado') %>  
 	<!-- /Header -->
 
@@ -37,8 +38,8 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12"> 
-			<!-- cree el form de Agregar un producto -->
-			<form action="/" method="get">
+			<!-- cree el form de Agregar un producto se envía a la ruta raíz /. --> 
+			<form action="/" method="get"> 
 				<div>
 					<label for="imagen">Imagen:</label>
 					<input type="file" id="imagen" name="imagen" value="" >

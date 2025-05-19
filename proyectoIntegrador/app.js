@@ -4,9 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var mainRouter = require('./routes/main');
-var productRouter = require("./routes/product");
-var userRouter = require("./routes/user");
+//usamos require para requerir otros archivos y despues podes usarlos con app.use()
+var mainRouter = require('./routes/main'); //Importa el archivo main.js que está dentro de la carpeta routes. //
+var productRouter = require("./routes/product"); //Importa el archivo product.js dentro de routes/, que contiene todas las rutas relacionadas a productos//
+var userRouter = require("./routes/user");  //Importa el archivo user.js dentro de routes/, que tiene las rutas relacionadas a usuarios 
 
 var app = express();
 
@@ -20,9 +21,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', mainRouter);
-app.use("/product", productRouter);
-app.use('/user', userRouter);
+////Estas líneas en app.js sirven para dividir la aplicación en distintos routers///
+app.use('/', mainRouter); //Todas las rutas que empiezan con /se manejan con mainRouter.//
+app.use("/product", productRouter); //Todas las rutas que empiezan con /product se manejan con productRouter.//
+app.use('/user', userRouter);  //Todas las rutas que empiezan con /user (por ejemplo, /user/login, /user/register) se manejan con userRouter.//
 
 
 // catch 404 and forward to error handler
@@ -41,4 +43,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+module.exports = app; // exportar la instancia de la aplicación de Express, 
