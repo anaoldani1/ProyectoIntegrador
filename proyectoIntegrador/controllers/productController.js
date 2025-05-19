@@ -8,16 +8,18 @@ const productController= {
     //muestra todos los productos
     index: function(req,res) {
         //envia la informacion de productos a product.ejs para poder renderizarlo, es un array de objetos literales
+            //req y res son metodos que contienen objetos literales
         return res.render("product", {
-            //le pasa todos los productos
+            //le pasa todos los productos..
             info: informacion.productos
         }) 
     },
     //muestra un producto especifico
     filtrarId: function (req,res) {
-        //Busca un producto específico basado en el id que recibe en la URL (req.params.id)
-        let idBuscado= req.params.id; //Agarra el id que viene en la URL.
-        let ObjAnswer= informacion.filtrarId(idBuscado) //Usa  función que está en informacion.js filtrarId. que busca en la lista cual tiene ese id y lo duvelve
+        //envia a product.ejs el resultado que da el metodo filtrarId al darle el id que busca en la ruta, y la informacion de comentarios para poder renderizarlo
+        let idBuscado= req.params.id;
+        let ObjAnswer= informacion.filtrarId(idBuscado)
+
         
         return res.render("product",
         {

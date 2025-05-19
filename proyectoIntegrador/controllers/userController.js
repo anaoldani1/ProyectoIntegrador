@@ -1,6 +1,8 @@
 const informacion = require('../db/informacion') // requiere la informadion de db (el objeto literal informacion)
 
 const userController = { // creamos un objeto literal para luego exportar
+
+    //req y res son metodos que contienen objetos literales
     login: function(req, res){  
         return res.render('login', // datos enviados a login.ejs para renderizarlos
             {usuario: informacion.usuarios, 
@@ -8,12 +10,12 @@ const userController = { // creamos un objeto literal para luego exportar
         })
     },
     register: function (req, res) {
-        return res.render('register', // datos enviados a registes.ejs para renderizarlos
+        return res.render('register', // datos de usuario enviados a registes.ejs para renderizarlos
             {datos: informacion.usuarios,
         })
     },
     profile: function(req, res){
-        return res.render('profile', // envio los datos a profile.ejs para renderizarlos
+        return res.render('profile', // envio los datos de usuario y productos a profile.ejs para renderizarlos
             {usuario: informacion.usuarios, 
             productos:  informacion.productos
         })
