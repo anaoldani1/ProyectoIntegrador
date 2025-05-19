@@ -5,6 +5,7 @@ const informacion = require("../db/informacion")
 
 //creo un objeto literal que contiene tres métodos: index, filtrarId, y add.
 const productController= {
+    //muestra todos los productos
     index: function(req,res) {
         //envia la informacion de productos a product.ejs para poder renderizarlo, es un array de objetos literales
         return res.render("product", {
@@ -12,7 +13,7 @@ const productController= {
             info: informacion.productos
         }) 
     },
-
+    //muestra un producto especifico
     filtrarId: function (req,res) {
         //Busca un producto específico basado en el id que recibe en la URL (req.params.id)
         let idBuscado= req.params.id; //Agarra el id que viene en la URL.
@@ -24,7 +25,7 @@ const productController= {
             comentarios: informacion.comentarios //los comentarios q vienem de ahi
         })
     },
-
+    
     add: function(req, res){
         return res.render("product-add", {// la envio a productadd.ejs para que pueda renderizarse
             productos: informacion.productos,

@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 //usamos require para requerir otros archivos y despues podes usarlos con app.use()
+//IMPORTA LOS ROUTERS..
 var mainRouter = require('./routes/main'); //Importa el archivo main.js que está dentro de la carpeta routes. //
 var productRouter = require("./routes/product"); //Importa el archivo product.js dentro de routes/, que contiene todas las rutas relacionadas a productos//
 var userRouter = require("./routes/user");  //Importa el archivo user.js dentro de routes/, que tiene las rutas relacionadas a usuarios 
@@ -22,6 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 ////Estas líneas en app.js sirven para dividir la aplicación en distintos routers///
+//cuando un usuario entre a estas rutas, usá el router correspondiente
 app.use('/', mainRouter); //Todas las rutas que empiezan con /se manejan con mainRouter.//
 app.use("/product", productRouter); //Todas las rutas que empiezan con /product se manejan con productRouter.//
 app.use('/user', userRouter);  //Todas las rutas que empiezan con /user (por ejemplo, /user/login, /user/register) se manejan con userRouter.//
