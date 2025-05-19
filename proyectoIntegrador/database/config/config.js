@@ -1,23 +1,10 @@
-{
+module.exports={ // agrego module.exports a el objeto litetal
   "development": {
     "username": "root",
-    "password": null,
-    "database": "database_development",
+    "password": "root", // cambio null a "root"
+    "database": "usuarios", // pongo el nombre de la base de datos 
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
-  "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  },
-  "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  }
+
 }
