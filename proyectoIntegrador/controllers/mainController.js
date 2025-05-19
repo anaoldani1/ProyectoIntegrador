@@ -4,7 +4,8 @@
 //importa de db toda la informacion de los productos
 const informacion = require('../db/informacion');
 
-///Creo un objeto literal que tiene dos métodos: index y searchResults.
+    //req y res son metodos que contienen objetos literales
+    ///Creo un objeto literal que tiene dos métodos: index y searchResults.
 const mainController = {
     index: function (req, res) {  
         //envia informacion de productos a index.ejs para renderizarla, lista de objetos literales con strings       
@@ -20,5 +21,6 @@ const mainController = {
     },
 
 };
+
 ///Exporto el controlador para poder usarlo en el archivo de rutas (routes/mainRoutes.js).
 module.exports = mainController;
