@@ -2,7 +2,9 @@
 
 const informacion = require('../db/informacion');
 
-const mainController = {
+const mainController = { // creamos un objeto literal para luego exportar
+
+    //req y res son metodos que contienen objetos literales
     index: function (req, res) {  
         //envia informacion de productos a index.ejs para renderizarla, lista de objetos literales con strings          
         return res.render("index", { 
@@ -18,4 +20,4 @@ const mainController = {
 
 };
 
-module.exports = mainController;
+module.exports = mainController;    
