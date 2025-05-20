@@ -28,7 +28,7 @@ module.exports=function (sequalize,dataTypes) {
     }
 
     let config = {
-        tableName: "usuarios",
+        tableName: "comentarios",
         timestamps: false,
         underscored: true
     };
@@ -41,7 +41,7 @@ module.exports=function (sequalize,dataTypes) {
         })
         Comment.belongsTo(models.Product, {
             as: "productos",
-            foreignKey: "productosid"
+            foreignKey: "id"
         })
     }
     return Comment
