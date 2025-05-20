@@ -2,6 +2,7 @@ CREATE SCHEMA proyectoIntegrador;
 USE proyectoIntegrador;
 
 CREATE TABLE usuarios(
+    name VARCHAR(100) NOT NULL,
 	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(250) NOT NULL UNIQUE,
     contrasenia VARCHAR(500) NOT NULL,
@@ -15,6 +16,7 @@ CREATE TABLE usuarios(
 
 INSERT INTO usuarios VALUES(
 	DEFAULT,
+    "Luis Navas", 
     "luis.navas1@digitalhouse.com",
     "12345",
     "2005-12-15",
@@ -26,6 +28,7 @@ INSERT INTO usuarios VALUES(
 ),
 (
 	DEFAULT,
+    "Luis Navas 12", 
     "luis.navas12@digitalhouse.com",
     "56789",
     "1999-10-26",
@@ -37,6 +40,7 @@ INSERT INTO usuarios VALUES(
 ),
 (
 	DEFAULT,
+    "Luis Navas 25", 
     "luis.navas25@digitalhouse.com",
     "12345",
     "2007-05-12",
@@ -47,6 +51,7 @@ INSERT INTO usuarios VALUES(
     null),
 (
 	DEFAULT,
+    "Luis Navas 45", 
     "luis.navas45@digitalhouse.com",
     "12345",
     "1990-10-03",
@@ -57,6 +62,7 @@ INSERT INTO usuarios VALUES(
     null),
 (
 	DEFAULT,
+    "Luis Navas 56", 
     "luis.navas56@digitalhouse.com",
     "12345",
     "1890-12-24",
