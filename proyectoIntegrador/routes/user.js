@@ -3,10 +3,13 @@ const express = require('express'); //Importa (o "requiere") el módulo express 
 const router = express.Router(); ///Crea un "router" que te permite definir rutas de forma modular y organizada.
 const userController= require('../controllers/userController') //requiere el controlador 
 
-router.get('/login', userController.login); //Cuando el usuario entra a /user/login, ejecuta el metodo login del userController. Muestra el formulario de inicio de sesión.
+//Usuario entra a /user/login, ejecuta el metodo login del userController. Muestra el formulario de inicio de sesión.
+router.get('/login', userController.login); 
 
-router.get('/register', userController.register); //Cuando el usuario entra a /user/register, ejecuta el metodo register del userController. Muestra el formulario de registro para crear una nueva cuenta.
+//Usuario entra a /user/register, ejecuta el metodo register del userController. Muestra el formulario de registro para crear una nueva cuenta.
+router.get('/register', userController.register); 
 
-router.get('/profile', userController.profile); //Cuando el usuario entra a /user/profile, ejecuta el metodo profile del userController. Muestra la página del perfil del usuario (con su info).
+//Usuario entra a /user/profile, ejecuta el metodo profile del userController. Muestra la página del perfil del usuario (con su info).
+router.get('/profile', userController.profile); 
 
 module.exports = router; 

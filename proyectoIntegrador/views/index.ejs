@@ -44,16 +44,18 @@
 				<h2 class="products-title">Productos</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<!-- armamos la estructura para un solo producto pero muestra todos por el for -->
+			<!-- armamos un for que recorre 10 productos -->
 		<% for( let i = 0; i < 10; i++ ) { %>
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
 						<!-- haces el link q cuando clickeas te lleve siempre al mismo -->
 						<a href="/product/id/1"> 
 							<figure class="product-box_image">
+								<!-- muestra la foto del producto -->
 								<img src="/images/products/<%= productos[i].imagen %>" alt="cafetera moulinex">
 							</figure>
-							<article class="product-box_data">
+							<article class="product-box_data"> 
+								<!-- muestra nombre, descripcion y un texto q dice 12 comentarios -->
 								<h2><%= productos[i].nombre  %></h2> 
 								<p><%= productos[i].descripcion %></p>
 								<p>Comentarios: 12</p>
