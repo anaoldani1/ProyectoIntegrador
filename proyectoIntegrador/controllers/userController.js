@@ -1,5 +1,4 @@
-const bcrypt = require('bcryptjs')
-const db = require('../database/models');
+const informacion = require('../db/informacion') // requiere la informadion de db (el objeto literal informacion)
 
 const userController = { // creamos un objeto literal para luego exportar
 
@@ -73,6 +72,17 @@ const userController = { // creamos un objeto literal para luego exportar
           });
       }
 
+    profile: function(req, res){
+        db.Comment.findAll({
+            include:[{association: "usuarios"}, {association: "productos"}]
+        })
+        .then(function(resultados){
+            return res.render("profile", {datos: resultados});
+        })
+        .catch(function(error){
+            return res.send(error);
+        })
+    },
 
 };
 
