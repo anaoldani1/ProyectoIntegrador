@@ -37,11 +37,11 @@ module.exports=function (sequalize,dataTypes) {
     Comment.associate = function(models){
         Comment.belongsTo(models.User, {
             as: "usuarios",
-            foreignKey: "id"
+            foreignKey: "usuariosid"
         })
         Comment.belongsTo(models.Product, {
             as: "productos",
-            foreignKey: "id"
+            foreignKey: "productosid"
         })
     }
     return Comment
