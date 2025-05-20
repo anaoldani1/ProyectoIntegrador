@@ -1,5 +1,3 @@
-module.exports=function (sequelize,dataTypes) {
-    let alias = "Comment"
 module.exports=function(sequelize,dataTypes) {
     let alias = "Comment";
 
@@ -45,6 +43,6 @@ module.exports=function(sequelize,dataTypes) {
             as: "productos",
             foreignKey: "productosid"
         })
-    }
+    };
     return Comment;
 }

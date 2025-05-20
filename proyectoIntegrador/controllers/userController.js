@@ -1,4 +1,6 @@
 const informacion = require('../db/informacion') // requiere la informadion de db (el objeto literal informacion)
+const db = require('../database/models');
+const bcrypt = require('bcryptjs'); 
 
 const userController = { // creamos un objeto literal para luego exportar
 
@@ -65,25 +67,30 @@ const userController = { // creamos un objeto literal para luego exportar
               });
 
     },
-    profile: function (req, res) {
-        db.usuarios.findAll()
-          .then(function (usuarios) {
-            res.render('profile', { usuario: usuarios });
+    profile: function(req, res) {
+      db.Comment.findAll({ ///busco todos los comentarios de la bd 
+          include: [
+              { association: "usuarios" }, // que me diga el usuario que comento
+              { association: "productos" } //sobre que producto comento 
+          ]
+      })
+      .then(function(comentarios) {
+          db.usuarios.findAll() /// busca todos los usuarios registrados 
+          .then(function(usuarios) {
+              db.Product.findAll()  //buca todos l;os productos disponibles 
+              .then(function(productos) {
+                  return res.render("profile", {  ///manda toda la info a la vista de profile 
+                      comentarios: comentarios,
+                      usuarios: usuarios,
+                      productos: productos
+                  });
+              });
           });
-      }
-
-    profile: function(req, res){
-        db.Comment.findAll({
-            include:[{association: "usuarios"}, {association: "productos"}]
-        })
-        .then(function(resultados){
-            return res.render("profile", {datos: resultados});
-        })
-        .catch(function(error){
-            return res.send(error);
-        })
+      })
+      .catch(function(error) {
+          return res.send("Error al cargar el perfil: " + error);
+      });
     },
-
-};
+}
 
 module.exports = userController;
