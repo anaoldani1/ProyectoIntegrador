@@ -7,10 +7,10 @@ module.exports=function (sequalize,dataTypes) {
             primaryKey: true,
             type: dataTypes.INTEGER
         },
-        productosId: {
+        productosid: {
             type: dataTypes.INTEGER
         },
-        usuariosId: {
+        usuariosid: {
             type: dataTypes.INTEGER
         },
         comentario: {
