@@ -1,4 +1,4 @@
-module.exports=function (sequalize,dataTypes) {
+module.exports=function (sequelize,dataTypes) {
     let alias = "Comment"
 
     let cols = {
@@ -41,7 +41,7 @@ module.exports=function (sequalize,dataTypes) {
         })
         Comment.belongsTo(models.Product, {
             as: "productos",
-            foreignKey: "id"
+            foreignKey: "productosid"
         })
     }
     return Comment
