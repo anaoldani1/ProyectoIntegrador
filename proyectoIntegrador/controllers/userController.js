@@ -1,4 +1,5 @@
 const informacion = require('../db/informacion') // requiere la informadion de db (el objeto literal informacion)
+let db = require("../database/models");
 
 const userController = { // creamos un objeto literal para luego exportar
 
@@ -15,12 +16,16 @@ const userController = { // creamos un objeto literal para luego exportar
         })
     },
     profile: function(req, res){
-        return res.render('profile', // envio los datos de usuario y productos a profile.ejs para renderizarlos
-            {usuario: informacion.usuarios, 
-            productos:  informacion.productos
+        db.Comment.findAll({
+            include:[{association: "usuarios"}, {association: "productos"}]
+        })
+        .then(function(resultados){
+            return res.render("profile", {datos: resultados});
+        })
+        .catch(function(error){
+            return res.send(error);
         })
     },
-
 
 };
 
