@@ -1,4 +1,6 @@
 const informacion = require('../db/informacion') // requiere la informadion de db (el objeto literal informacion)
+const bcrypt = require('bcryptjs')
+
 
 const userController = { // creamos un objeto literal para luego exportar
 

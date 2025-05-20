@@ -1,5 +1,5 @@
-module.exports=function (sequalize,dataTypes) {
-    let alias = "Comment"
+module.exports=function(sequelize,dataTypes) {
+    let alias = "Comment";
 
     let cols = {
         id: {
@@ -28,7 +28,7 @@ module.exports=function (sequalize,dataTypes) {
     }
 
     let config = {
-        tableName: "usuarios",
+        tableName: "comments",
         timestamps: false,
         underscored: true
     };
@@ -44,5 +44,5 @@ module.exports=function (sequalize,dataTypes) {
             foreignKey: "id"
         })
     }
-    return Comment
+    return Comment;
 }

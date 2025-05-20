@@ -1,4 +1,4 @@
-module.export=function (sequalize,dataTypes) {
+module.export=function (sequelize,dataTypes) {
     let alias = "Product"
     let cols = {
         id: {
