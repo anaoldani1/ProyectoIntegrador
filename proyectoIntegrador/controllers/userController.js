@@ -17,56 +17,55 @@ const userController = { // creamos un objeto literal para luego exportar
         })
     },
 
-    processregister: function (req, res) {
-            const usuario = req.body.usuario;
-            const email = req.body.email;
-            const password = req.body.password;
-            const fechaNacimiento = req.body.fechaNacimiento;
-            const documento = req.body.documento;
-            const fotoPerfil = req.body.fotoPerfil;
-        
-            if (!email) {
-              return res.send("El email no puede estar vacío");
-            }
-        
-            db.usuarios.findOne({ where: { email: email } })
-              .then(function (userFound) {
-                if (userFound) {
-                  return res.send("Este email ya está registrado");
-                }
-        
-                if (!password) {
-                  return res.send("La contraseña no puede estar vacía");
-                }
-        
-                if (password.length < 3) {
-                  return res.send("La contraseña debe tener al menos 3 caracteres");
-                }
-        
-                const passHasheada = bcrypt.hashSync(password, 10);
-        
-                db.usuarios.create({
-                  name: usuario,
-                  email: email,
-                  contrasenia: passHasheada,
-                  fechaNac: fechaNacimiento,
-                  documento: documento,
-                  foto: fotoPerfil,
-                  createdAt: new Date()
-                })
-                  .then(function () {
-                    return res.redirect('/user/profile');
-                  })
-                  .catch(function (error) {
-                    return res.send("Error al crear usuario: " + error);
-                  });
-        
-              })
-              .catch(function (error) {
-                return res.send("Error al validar email: " + error);
-              });
-
+    processRegister: function (req, res) {
+      const name = req.body.name;
+      const email = req.body.email;
+      const password = req.body.password;
+      const fechaNacimiento = req.body.fechaNacimiento;
+      const documento = req.body.documento;
+      const fotoPerfil = req.body.fotoPerfil;
+    
+      // Validaciones antes de consultar la DB
+      if (!email) {
+        return res.send("El email no puede estar vacío");
+      }
+    
+      if (!password) {
+        return res.send("La contraseña no puede estar vacía");
+      }
+    
+      if (password.length < 3) {
+        return res.send("La contraseña debe tener al menos 3 caracteres");
+      }
+    
+      // Luego verificamos si ya existe el email
+      db.User.findOne({ where: { email: email } })
+        .then(function (userFound) {
+          if (userFound) {
+            return res.send("Este email ya está registrado");
+          }
+    
+          const passHasheada = bcrypt.hashSync(password, 10);
+    
+          db.User.create({
+            email: email,
+            contrasenia: passHasheada,
+            fechaNac: fechaNacimiento,
+            documento: documento,
+            foto: fotoPerfil,
+          })
+          .then(function () {
+            return res.redirect('/user/login');
+          })
+          .catch(function (error) {
+            return res.send("Error al crear usuario: " + error);
+          });
+        })
+        .catch(function (error) {
+          return res.send("Error al validar email: " + error);
+        });
     },
+    
     profile: function(req, res) {
       db.Comment.findAll({ ///busco todos los comentarios de la bd 
           include: [
@@ -75,7 +74,7 @@ const userController = { // creamos un objeto literal para luego exportar
           ]
       })
       .then(function(comentarios) {
-          db.usuarios.findAll() /// busca todos los usuarios registrados 
+          db.User.findAll() /// busca todos los usuarios registrados 
           .then(function(usuarios) {
               db.Product.findAll()  //buca todos l;os productos disponibles 
               .then(function(productos) {
