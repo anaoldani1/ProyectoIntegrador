@@ -12,9 +12,11 @@ const userController = { // creamos un objeto literal para luego exportar
         })
     },
     register: function (req, res) {
-        return res.render('register', // datos de usuario enviados a registes.ejs para renderizarlos
-            {datos: informacion.usuarios,
-        })
+      if (req.session && req.session.user) {
+        return res.redirect("/user/profile");
+      }
+    
+      return res.render("register");
     },
 
     processRegister: function (req, res) {
