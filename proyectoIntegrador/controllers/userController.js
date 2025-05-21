@@ -11,6 +11,12 @@ const userController = { // creamos un objeto literal para luego exportar
             productos: informacion.productos,
         })
     },
+
+    processLogin: function (req, res) {
+      const email = req.body.email;
+      const password = req.body.password;
+    },
+
     register: function (req, res) {
       if (req.session && req.session.user) {
         return res.redirect("/user/profile");
