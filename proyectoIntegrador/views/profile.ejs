@@ -36,7 +36,7 @@
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
 					<h1 class="main-title">
-						<%=locals.userInfo.nombre%> <!-- nombre del usuario , ver con que nombre pusieron en appjs los datos de session-->
+						<%=locals..nombre%> <!-- nombre del usuario , ver con que nombre pusieron en appjs los datos de session-->
 						<a href="/"> <!-- era a /profile/profileedit  pero para que no rompa lo mande a home-->
 							<i class="fas fa-cog"></i>
 						</a>
@@ -45,7 +45,7 @@
 				</div>
 				<div>
 					<ul class="">
-						<li><%=locals.userInfo.email%></li>
+						<li><%=locals.user.email%></li>
 						<li>8 productos</li> <!-- voy a tener que hacer un for con contador para ver cuantos productos publico -->
 						<li>200 seguidores</li>
 						<li>300 comentarios</li>

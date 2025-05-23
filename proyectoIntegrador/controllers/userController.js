@@ -123,7 +123,7 @@ const userController = { // creamos un objeto literal para luego exportar
 
     logout: function(req, res){
         req.session.destroy()
-        res.clearCookie("")
+        res.clearCookie("recordame")
         return res.redirect("/users/login")
     }
 }

@@ -43,13 +43,17 @@ app.use(function (req, res, next) {
 
   return next();
 });
+
 ////Estas líneas en app.js sirven para dividir la aplicación en distintos routers///
 //cuando un usuario entre a estas rutas, usá el router correspondiente
 app.use('/', mainRouter); //Todas las rutas que empiezan con /se manejan con mainRouter.//
 app.use("/product", productRouter); //Todas las rutas que empiezan con /product se manejan con productRouter.//
 app.use('/user', userRouter);  //Todas las rutas que empiezan con /user (por ejemplo, /user/login, /user/register) se manejan con userRouter.//
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 7784818910008aebfab572088bf2c364f136a06b
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
