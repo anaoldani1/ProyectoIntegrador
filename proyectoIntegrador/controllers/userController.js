@@ -9,23 +9,15 @@ const userController = { // creamos un objeto literal para luego exportar
         if (req.session.user){ // si ya esta logueado no puede entrar a loguearse de nuevo
           return res.redirect("/user/profile")
         }
-        return res.render('login',{usuario: informacion.usuarios, 
-          productos: informacion.productos,
-      });
+        return res.render('login');
     },
 
     processLogin: function (req, res) {
       
-<<<<<<< HEAD
       let userInfo={
         email : req.body.email,
         password : req.body.contrasenia
       }
-=======
-        
-      let email = req.body.email
-      let password = req.body.contrasenia
->>>>>>> af022f6bd71925de78fee334f1e9a87061cdc69c
       
       db.User.findOne({ where: { email: userInfo.email } })
      
@@ -121,9 +113,7 @@ const userController = { // creamos un objeto literal para luego exportar
     },
     
     profile: function(req, res) {
-      res.render("profile", {
-        usuario: req.session.user
-      });
+      res.render("profile");
     },
     
 
