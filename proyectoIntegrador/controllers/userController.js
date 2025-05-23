@@ -16,10 +16,16 @@ const userController = { // creamos un objeto literal para luego exportar
 
     processLogin: function (req, res) {
       
+<<<<<<< HEAD
       let userInfo={
         email : req.body.email,
         password : req.body.contrasenia
       }
+=======
+        
+      let email = req.body.email
+      let password = req.body.contrasenia
+>>>>>>> af022f6bd71925de78fee334f1e9a87061cdc69c
       
       db.User.findOne({ where: { email: userInfo.email } })
      

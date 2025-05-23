@@ -31,12 +31,12 @@
 	<section class="info-usuario container products-wrapper">
 		<div class="row">
 			<div class="img-container offset-3 col-2">
-				<img src="/images/users/<%=usuario.imagen%>" alt="foto de perfil" class="foto-perfil">
+				<img src="/images/users" alt="foto de perfil" class="foto-perfil">
 			</div> 
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
 					<h1 class="main-title">
-						<%=locals..nombre%> <!-- nombre del usuario , ver con que nombre pusieron en appjs los datos de session-->
+						 <!-- nombre del usuario , ver con que nombre pusieron en appjs los datos de session-->
 						<a href="/"> <!-- era a /profile/profileedit  pero para que no rompa lo mande a home-->
 							<i class="fas fa-cog"></i>
 						</a>
@@ -45,7 +45,7 @@
 				</div>
 				<div>
 					<ul class="">
-						<li><%=locals.user.email%></li>
+						<%= user.email %>
 						<li>8 productos</li> <!-- voy a tener que hacer un for con contador para ver cuantos productos publico -->
 						<li>200 seguidores</li>
 						<li>300 comentarios</li>
@@ -57,34 +57,7 @@
 	<!-- /Datos del usuario -->
 
 	<!-- Mis productos -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Mis productos</h2>
-			</div>
-			<!-- Show mis productos -->
-			<!-- Empieza un bucle que repite el contenido 10 veces. Cada vez cambia el índice i. -->
-			<% for( let i = 0; i < 10; i++ ) { %>  
-				<div class="col-12 col-sm-6 col-lg-3">
-					<section class="product-box">
-						<a href="/product/id/1">
-							<figure class="product-box_image">
-								<!-- Muestra la imagen del producto i, usando el nombre de imagen que viene en productos[i].imagen. -->
-								<img src="/images/products/<%= productos[i].imagen %>" alt="cafetera moulinex">
-							</figure>
-							<article class="product-box_data">
-								<h2><%= productos[i].nombre  %></h2>
-								<p><%= productos[i].descripcion %></p>
-								<p>Comentarios: 12</p>
-							</article>
-						</a>
-					</section>
-				</div>
-		<% } %>
-			
-			
-		</div>
-	</div>
+	
 	<!-- /Mis productos -->
 
 
