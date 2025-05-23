@@ -9,21 +9,27 @@ const userController = { // creamos un objeto literal para luego exportar
         if (req.session.user){ // si ya esta logueado no puede entrar a loguearse de nuevo
           return res.redirect("/user/profile")
         }
-        return res.render('login', // datos enviados a login.ejs para renderizarlos
-            {usuario: informacion.usuarios, 
-            productos: informacion.productos,
-        })
+        return res.render('login' // datos enviados a login.ejs para renderizarlos
+        //     {usuario: informacion.usuarios, 
+        //     productos: informacion.productos,
+        // }
+        )
     },
 
     processLogin: function (req, res) {
+      console.log("Email recibido:", req.body.email);
+
       const email = req.body.email
       const password = req.body.contrasenia
 
       db.User.findOne({ where: { email: email } })
+      
       .then(function (user) {
+        
         if (!user) {
           return res.send("Error, no existe una cuenta con este email.")
         }
+        console.log("user.contrasenia en la base:", user.contrasenia);
 
         if (!bcrypt.compareSync(password, user.contrasenia)){
           return res.send("Error, contrasenia incorrecta")
@@ -39,8 +45,12 @@ const userController = { // creamos un objeto literal para luego exportar
 
       })
       .catch(function (err) {
-        return res.send("Error");
+        
+        return res.send("Error 1232wkwekdr");
       });
+      //.catch(function (err) {
+      //  return res.send("Error");
+      //});
 
     
     },
@@ -105,32 +115,15 @@ const userController = { // creamos un objeto literal para luego exportar
         });
     },
     
-    profile: function(req, res) {
-      db.Comment.findAll({ ///busco todos los comentarios de la bd 
-          include: [
-              { association: "usuarios" }, // que me diga el usuario que comento
-              { association: "productos" } //sobre que producto comento 
-          ]
-      })
-      .then(function(comentarios) {
-          db.User.findAll() /// busca todos los usuarios registrados 
-          .then(function(usuarios) {
-              db.Product.findAll()  //buca todos l;os productos disponibles 
-              .then(function(productos) {
-                  return res.render("profile", {  ///manda toda la info a la vista de profile 
-                      comentarios: comentarios,
-                      usuarios: usuarios,
-                      productos: productos
-                  });
-              });
-          });
-      })
-      .catch(function(error) {
-          return res.send("Error al cargar el perfil: " + error);
-      });
+    profile: function(req,res){
+        res.render("profile")
     },
 
-    
+    logout: function(req, res){
+        req.session.destroy()
+        res.clearCookie("")
+        return res.redirect("/users/login")
+    }
 }
 
 module.exports = userController;

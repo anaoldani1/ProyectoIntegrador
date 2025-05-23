@@ -7,10 +7,10 @@ module.exports=function(sequelize,dataTypes) {
             primaryKey: true,
             type: dataTypes.INTEGER
         },
-        productosid: {
+        productosId: {
             type: dataTypes.INTEGER
         },
-        usuariosid: {
+        usuariosId: {
             type: dataTypes.INTEGER
         },
         comentario: {
