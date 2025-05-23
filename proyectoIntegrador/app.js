@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session = require('express-session'); // requerimos session
 
 //usamos require para requerir otros archivos y despues podes usarlos con app.use()
 //IMPORTA LOS ROUTERS..
@@ -22,7 +23,25 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: "mensaje secreto",
+  resave: false,
+  saveUninitialized: true
+}));
 
+
+app.use(function (req, res, next) {
+  if (req.session.user != undefined) {
+    res.locals.user = req.session.user;
+  }
+
+  // osea si existe una cookie del checkbox pero no hay nadie loguado usamos el mail guardado en la cookie para loguarlo
+  if (req.cookies.recordame && req.session.user == undefined) {
+    req.session.user = { email: req.cookies.recordame };
+  }
+
+  return next();
+});
 ////Estas líneas en app.js sirven para dividir la aplicación en distintos routers///
 //cuando un usuario entre a estas rutas, usá el router correspondiente
 app.use('/', mainRouter); //Todas las rutas que empiezan con /se manejan con mainRouter.//

@@ -16,6 +16,7 @@ router.get('/profile', userController.profile);
 ///2 parte register
 router.post('/register', userController.processRegister);
 
+
 //2 parte de login 
 router.post('/login', userController.processLogin);
 

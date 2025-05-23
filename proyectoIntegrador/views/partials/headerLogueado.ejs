@@ -54,17 +54,30 @@
 				</ul>
 	
 				<ul class="right-navbar">
-					<li><a href="/user/profile">
-						<%=usuario.usuario%><i class="fas fa-user"></i>
-						</a>
-					</li>
-					<li>
-						<form action="/" method="get">
-							<button class="logout" type="submit">
-								Cerrar sesión <i class="fas fa-sign-in-alt"></i>
-							</button>
-						</form>
-					</li>
+					<% if (user) { %>
+						<li>Hola, Bienvenido <%= user.nombre %><i class="fas fa-user"></i></li>
+						<li><a href="/user/profile">Mi Perfil<i class="fas fa-user"></i></a>
+						</li>
+						<li>
+							<a href="/product/add">Agregar producto<i class="fas fa-user"></i></a>
+					  	</li>
+						  <li>
+							<form action="/" method="get">
+								<button class="logout" type="submit">
+									Cerrar sesión <i class="fas fa-sign-in-alt"></i>
+								</button>
+							</form>
+						</li>
+					<% } else { %> 
+						<li>
+						  <a href="/user/register">Creá tu cuenta <i class="far fa-address-card"></i></a>
+						</li>
+						<li>
+						  <a href="/user/login">Ingresá <i class="fas fa-sign-in-alt"></i></a>
+						</li>
+					  <% } %>
+					</ul>
+					
 					<!-- Solo deslogueado <li>
 						<a href="register.html">Creá tu cuenta <i class="far fa-address-card"></i>
 						</a>
