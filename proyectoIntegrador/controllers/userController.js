@@ -16,28 +16,28 @@ const userController = { // creamos un objeto literal para luego exportar
 
     processLogin: function (req, res) {
       
-
-      let email = req.body.email
-      let password = req.body.contrasenia
+      let userInfo={
+        email : req.body.email,
+        password : req.body.contrasenia
+      }
       
-
-      db.User.findOne({ where: { email: email } })
+      db.User.findOne({ where: { email: userInfo.email } })
      
-      .then(function (user) {
+      .then(function (resultado) {
         
-        if (!user) {
+        if (!resultado) {
           return res.send("Error, no existe una cuenta con este email.")
         }
    
 
-        if (!bcrypt.compareSync(password, user.contrasenia)){
+        if (!bcrypt.compareSync(userInfo.password, resultado.contrasenia)){
           return res.send("Error, contrasenia incorrecta")
         }
 
-        req.session.user = user
+        req.session.user = resultado
 
         if (req.body.checkbox) {
-          res.cookie("recordame", user.email, { maxAge: 1000 * 60 * 5});
+          res.cookie("recordame", resultado.email, { maxAge: 1000 * 60 * 5});
         }
 
         return res.redirect("/user/profile");

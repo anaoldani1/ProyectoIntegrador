@@ -35,7 +35,9 @@ app.use(function (req, res, next) {
   if (req.session.user != undefined) {
     res.locals.user = req.session.user;
   }
-
+  return next();
+})
+app.use(function (req, res, next) {
   // osea si existe una cookie del checkbox pero no hay nadie loguado usamos el mail guardado en la cookie para loguarlo
   if (req.cookies.recordame && req.session.user == undefined) {
     req.session.user = { email: req.cookies.recordame };
@@ -50,10 +52,6 @@ app.use('/', mainRouter); //Todas las rutas que empiezan con /se manejan con mai
 app.use("/product", productRouter); //Todas las rutas que empiezan con /product se manejan con productRouter.//
 app.use('/user', userRouter);  //Todas las rutas que empiezan con /user (por ejemplo, /user/login, /user/register) se manejan con userRouter.//
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 7784818910008aebfab572088bf2c364f136a06b
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
