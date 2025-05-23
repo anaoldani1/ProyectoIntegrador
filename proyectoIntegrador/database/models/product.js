@@ -42,6 +42,4 @@ module.exports=function (sequelize,dataTypes) {
             foreignKey: "usuarioId"
         })
     }
-
-
 }
