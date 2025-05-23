@@ -22,12 +22,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+//uso session
 app.use(session({
-  secret: "mensaje secreto",
+  secret: "proyectoIntegrador",
   resave: false,
   saveUninitialized: true
-}));
+
+}))
 
 
 app.use(function (req, res, next) {
@@ -49,6 +50,10 @@ app.use('/', mainRouter); //Todas las rutas que empiezan con /se manejan con mai
 app.use("/product", productRouter); //Todas las rutas que empiezan con /product se manejan con productRouter.//
 app.use('/user', userRouter);  //Todas las rutas que empiezan con /user (por ejemplo, /user/login, /user/register) se manejan con userRouter.//
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7784818910008aebfab572088bf2c364f136a06b
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
