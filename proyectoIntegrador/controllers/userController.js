@@ -101,6 +101,10 @@ const userController = { // creamos un objeto literal para luego exportar
           return res.send("Error al cargar el perfil: " + error);
       });
     },
+
+    logout: function(req, res){
+        res.clearCookie()
+    }
 }
 
 module.exports = userController;

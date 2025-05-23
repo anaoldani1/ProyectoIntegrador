@@ -19,5 +19,8 @@ router.post('/register', userController.processRegister);
 //2 parte de login 
 router.post('/login', userController.processLogin);
 
+//logout
+router.get('/logout', userController.logout)
+
 
 module.exports = router; 
