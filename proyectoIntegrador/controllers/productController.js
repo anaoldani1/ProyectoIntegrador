@@ -1,13 +1,13 @@
 ////PARTE DE DETALLE--> 10
 
 //Importa los datos de productos, usuarios y comentarios 
-const informacion = require("../db/informacion")
+const db = require("../database/models");
 
 //creo un objeto literal que contiene tres métodos: index, filtrarId, y add.
 const productController= {
     index: function(req,res) {// creamos un objeto literal para luego exportar
 
-        Product.findAll({
+        db.productos.findAll({
             include: [
                 {association: "users"}
             ]

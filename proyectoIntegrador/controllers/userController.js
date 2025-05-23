@@ -1,5 +1,6 @@
 const informacion = require('../db/informacion') // requiere la informadion de db (el objeto literal informacion)
-let db = require("../database/models");
+const db = require('../database/models');
+const bcrypt = require('bcryptjs'); 
 
 const userController = { // creamos un objeto literal para luego exportar
 
@@ -10,23 +11,96 @@ const userController = { // creamos un objeto literal para luego exportar
             productos: informacion.productos,
         })
     },
-    register: function (req, res) {
-        return res.render('register', // datos de usuario enviados a registes.ejs para renderizarlos
-            {datos: informacion.usuarios,
-        })
-    },
-    profile: function(req, res){
-        db.Comment.findAll({
-            include:[{association: "usuarios"}, {association: "productos"}]
-        })
-        .then(function(resultados){
-            return res.render("profile", {datos: resultados});
-        })
-        .catch(function(error){
-            return res.send(error);
-        })
+
+    processLogin: function (req,res) {
+      const email= req.body.email;
+      const password = req.body.password;
     },
 
-};
+    ///CONTROLER PARA REGISTER 
+    register: function (req, res) {
+      if (req.session && req.session.user) { // verifico si el usuario esta logueado 
+        return res.redirect("/user/profile"); // si esta logueado lo redirecciono a su perfil 
+      }
+    
+      return res.render("register"); // si no esta logueado renderizo la vista del registro 
+    },
+
+    processRegister: function (req, res) {
+      ///traigo los datos enviados del formulario de register.ejs
+      const name = req.body.name;
+      const email = req.body.email;
+      const password = req.body.password;
+      const fechaNacimiento = req.body.fechaNacimiento;
+      const documento = req.body.documento;
+      const fotoPerfil = req.body.fotoPerfil;
+    
+      // Validaciones antes de consultar la DB
+      if (!email) {
+        return res.send("El email no puede estar vacío");
+      }
+    
+      if (!password) {
+        return res.send("La contraseña no puede estar vacía");
+      }
+    
+      if (password.length < 3) {
+        return res.send("La contraseña debe tener al menos 3 caracteres");
+      }
+    
+      // Luego verificamos si ya existe un usuario con  el email
+      db.User.findOne({ where: { email: email } })
+        .then(function (userFound) {
+          if (userFound) {  // si ya esta registrado lo doy mensaje 
+            return res.send("Este email ya está registrado");
+          }
+    
+          const passHasheada = bcrypt.hashSync(password, 10);  //encripto la contra 
+    
+          // creo nuevo usuario en la base de datos 
+          db.User.create({
+            email: email,
+            contrasenia: passHasheada,
+            fechaNac: fechaNacimiento,
+            documento: documento,
+            foto: fotoPerfil,
+          })
+          .then(function () {
+            return res.redirect('/user/login');  // si se crea redirijo a login 
+          })
+          .catch(function (error) {
+            return res.send("Error al crear usuario: " + error);
+          });
+        })
+        .catch(function (error) {
+          return res.send("Error al validar email: " + error);
+        });
+    },
+    
+    profile: function(req, res) {
+      db.Comment.findAll({ ///busco todos los comentarios de la bd 
+          include: [
+              { association: "usuarios" }, // que me diga el usuario que comento
+              { association: "productos" } //sobre que producto comento 
+          ]
+      })
+      .then(function(comentarios) {
+          db.User.findAll() /// busca todos los usuarios registrados 
+          .then(function(usuarios) {
+              db.Product.findAll()  //buca todos l;os productos disponibles 
+              .then(function(productos) {
+                  return res.render("profile", {  ///manda toda la info a la vista de profile 
+                      comentarios: comentarios,
+                      usuarios: usuarios,
+                      productos: productos
+                  });
+              });
+          });
+      })
+      .catch(function(error) {
+          return res.send("Error al cargar el perfil: " + error);
+      });
+    },
+}
 
 module.exports = userController;

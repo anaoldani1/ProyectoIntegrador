@@ -1,52 +1,56 @@
-module.exports=function (sequelize,dataTypes) {
-    let alias = "User"; 
+module.exports = function(sequelize, dataTypes) {
+    let alias = "User";
+
     let cols = {
         id: {
-            autoIncrement : true,
-            primaryKey : true,
-            type : dataTypes.INTEGER
+            autoIncrement: true,
+            primaryKey: true,
+            type: dataTypes.INTEGER
         },
         email: {
-            type: dataTypes.string
-        },
+            type: dataTypes.STRING
+        }, 
         contrasenia:{
-            type: dataTypes.string
+            type:  dataTypes.STRING
         },
-        fechaNac:{
-            type: dataTypes.DATE
-        },
-        documento:{
-            type: dataTypes.DECIMAL
-        },
-        foto:{
-            type:dataTypes.string
-        },
-        created_at: {
-            type: dataTypes.DATE
-        },
-        updated_at: {
-            type: dataTypes.DATE
-        },
-        deleted_at:{
+        fechaNac: {
             type:dataTypes.DATE
-        }
-    }
+        }, 
+        documento: {
+            type: dataTypes.INTEGER
+        }, 
+        foto: {
+            type:dataTypes.STRING
+        },
+        createdAt: {
+            type: dataTypes.DATE
+        }, 
+        updatedAt:{
+            type: dataTypes.DATE
+        },
+        deletedAt: {
+            type: dataTypes.DATE
+        },
+    };
+
     let config = {
         tableName: "usuarios",
-        timestamps: false,
-        //underscored: true, //No es necesario si timestamps es false.
-    }
-    let User = sequelize.define(alias, cols, config);
-    User.associate= function(models){
-        User.hasMany(models.Product, {
-            as:'products',
-            foreignKey: 'user_id'
-        }); 
+        timestamps: true
+    };
 
-        User.hasMany(models.Comment,{
-            as:'comments', 
-            foreignKey:'user_id'
+    let User = sequelize.define(alias, cols, config);
+
+    User.associate = function(models) {
+        User.hasMany(models.Product, {
+            as: 'productos',
+            foreignKey: 'usuarioId'
+        });
+
+        User.hasMany(models.Comment, {
+            as: 'comentarios',
+            foreignKey: 'usuariosId'
         });
     };
-    return User; 
-}
+
+    return User;
+};

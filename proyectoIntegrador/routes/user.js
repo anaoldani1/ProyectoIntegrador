@@ -12,4 +12,12 @@ router.get('/register', userController.register);
 //Usuario entra a /user/profile, ejecuta el metodo profile del userController. Muestra la página del perfil del usuario (con su info).
 router.get('/profile', userController.profile); 
 
+
+///2 parte register
+router.post('/register', userController.processRegister);
+
+//2 parte de login 
+router.post('/login', userController.processLogin);
+
+
 module.exports = router; 
