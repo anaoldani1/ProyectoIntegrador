@@ -10,7 +10,7 @@ const session = require('express-session'); // requerimos session
 var mainRouter = require('./routes/main'); //Importa el archivo main.js que está dentro de la carpeta routes. //
 var productRouter = require("./routes/product"); //Importa el archivo product.js dentro de routes/, que contiene todas las rutas relacionadas a productos//
 var userRouter = require("./routes/user");  //Importa el archivo user.js dentro de routes/, que tiene las rutas relacionadas a usuarios 
-const session = require("express-session")
+
 
 var app = express();
 

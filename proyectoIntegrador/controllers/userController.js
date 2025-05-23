@@ -15,7 +15,6 @@ const userController = { // creamos un objeto literal para luego exportar
         })
     },
 
-<<<<<<< HEAD
     processLogin: function (req, res) {
       const email = req.body.email
       const password = req.body.contrasenia
@@ -44,11 +43,6 @@ const userController = { // creamos un objeto literal para luego exportar
       });
 
     
-=======
-    processLogin: function (req,res) {
-      const email= req.body.email;
-      const password = req.body.password;
->>>>>>> dc44458178db1a517565b5a8ce5d0b82f549e168
     },
 
     ///CONTROLER PARA REGISTER 
@@ -136,9 +130,7 @@ const userController = { // creamos un objeto literal para luego exportar
       });
     },
 
-    logout: function(req, res){
-        res.
-    }
+    
 }
 
 module.exports = userController;
