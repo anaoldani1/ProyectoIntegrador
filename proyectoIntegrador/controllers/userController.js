@@ -103,7 +103,7 @@ const userController = { // creamos un objeto literal para luego exportar
     },
 
     logout: function(req, res){
-        res.clearCookie()
+        res.
     }
 }
 
