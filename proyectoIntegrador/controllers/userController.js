@@ -9,22 +9,27 @@ const userController = { // creamos un objeto literal para luego exportar
         if (req.session.user){ // si ya esta logueado no puede entrar a loguearse de nuevo
           return res.redirect("/user/profile")
         }
-        return res.render('login', // datos enviados a login.ejs para renderizarlos
-            {usuario: informacion.usuarios, 
-            productos: informacion.productos,
-        })
+        return res.render('login' // datos enviados a login.ejs para renderizarlos
+        //     {usuario: informacion.usuarios, 
+        //     productos: informacion.productos,
+        // }
+        )
     },
 
-<<<<<<< HEAD
     processLogin: function (req, res) {
+      console.log("Email recibido:", req.body.email);
+
       const email = req.body.email
       const password = req.body.contrasenia
 
       db.User.findOne({ where: { email: email } })
+      
       .then(function (user) {
+        
         if (!user) {
           return res.send("Error, no existe una cuenta con este email.")
         }
+        console.log("user.contrasenia en la base:", user.contrasenia);
 
         if (!bcrypt.compareSync(password, user.contrasenia)){
           return res.send("Error, contrasenia incorrecta")
@@ -40,15 +45,14 @@ const userController = { // creamos un objeto literal para luego exportar
 
       })
       .catch(function (err) {
-        return res.send("Error");
+        
+        return res.send("Error 1232wkwekdr");
       });
+      //.catch(function (err) {
+      //  return res.send("Error");
+      //});
 
     
-=======
-    processLogin: function (req,res) {
-      const email= req.body.email;
-      const password = req.body.password;
->>>>>>> dc44458178db1a517565b5a8ce5d0b82f549e168
     },
 
     ///CONTROLER PARA REGISTER 
@@ -137,8 +141,8 @@ const userController = { // creamos un objeto literal para luego exportar
     },
 
     logout: function(req, res){
-        res.
-    }
+      return req.send("para que no este vacio")
+    } 
 }
 
 module.exports = userController;

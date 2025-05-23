@@ -10,7 +10,7 @@ const session = require('express-session'); // requerimos session
 var mainRouter = require('./routes/main'); //Importa el archivo main.js que está dentro de la carpeta routes. //
 var productRouter = require("./routes/product"); //Importa el archivo product.js dentro de routes/, que contiene todas las rutas relacionadas a productos//
 var userRouter = require("./routes/user");  //Importa el archivo user.js dentro de routes/, que tiene las rutas relacionadas a usuarios 
-const session = require("express-session")
+//const session = require("express-session")
 
 var app = express();
 
@@ -23,11 +23,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+//uso session
 app.use(session({
-  secret: "mensaje secreto",
+  secret: "proyectoIntegrador",
   resave: false,
   saveUninitialized: true
-}));
+
+}))
 
 
 app.use(function (req, res, next) {
@@ -48,13 +50,7 @@ app.use('/', mainRouter); //Todas las rutas que empiezan con /se manejan con mai
 app.use("/product", productRouter); //Todas las rutas que empiezan con /product se manejan con productRouter.//
 app.use('/user', userRouter);  //Todas las rutas que empiezan con /user (por ejemplo, /user/login, /user/register) se manejan con userRouter.//
 
-//uso session
-app.use(session({
-  secret: "proyectoIntegrador",
-  resave: false,
-  saveUninitialized: true
 
-}))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
