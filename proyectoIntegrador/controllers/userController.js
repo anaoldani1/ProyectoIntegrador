@@ -77,33 +77,14 @@ const userController = { // creamos un objeto literal para luego exportar
         });
     },
     
-    profile: function(req, res) {
-      db.Comment.findAll({ ///busco todos los comentarios de la bd 
-          include: [
-              { association: "usuarios" }, // que me diga el usuario que comento
-              { association: "productos" } //sobre que producto comento 
-          ]
-      })
-      .then(function(comentarios) {
-          db.User.findAll() /// busca todos los usuarios registrados 
-          .then(function(usuarios) {
-              db.Product.findAll()  //buca todos l;os productos disponibles 
-              .then(function(productos) {
-                  return res.render("profile", {  ///manda toda la info a la vista de profile 
-                      comentarios: comentarios,
-                      usuarios: usuarios,
-                      productos: productos
-                  });
-              });
-          });
-      })
-      .catch(function(error) {
-          return res.send("Error al cargar el perfil: " + error);
-      });
+    profile: function(req,res){
+        res.render("profile")
     },
 
     logout: function(req, res){
-        res.
+        req.session.destroy()
+        res.clearCookie("")
+        return res.redirect("/users/login")
     }
 }
 
