@@ -16,7 +16,7 @@ const userController = { // creamos un objeto literal para luego exportar
 
     processLogin: function (req, res) {
       
-
+        
       let email = req.body.email
       let password = req.body.contrasenia
       
@@ -114,9 +114,12 @@ const userController = { // creamos un objeto literal para luego exportar
         });
     },
     
-    profile: function(req,res){
-        res.render("profile")
+    profile: function(req, res) {
+      res.render("profile", {
+        usuario: req.session.user
+      });
     },
+    
 
     logout: function(req, res){
         req.session.destroy()
