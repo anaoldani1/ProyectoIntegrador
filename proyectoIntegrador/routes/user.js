@@ -16,8 +16,17 @@ router.get('/profile', userController.profile);
 ///2 parte register
 router.post('/register', userController.processRegister);
 
+<<<<<<< HEAD
 
 ///2 parte login
 router.post("/login", userController.processLogin);
+=======
+//2 parte de login 
+router.post('/login', userController.processLogin);
+
+//logout
+router.get('/logout', userController.logout)
+
+>>>>>>> dc44458178db1a517565b5a8ce5d0b82f549e168
 
 module.exports = router; 

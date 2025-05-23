@@ -15,6 +15,7 @@ const userController = { // creamos un objeto literal para luego exportar
         })
     },
 
+<<<<<<< HEAD
     processLogin: function (req, res) {
       const email = req.body.email
       const password = req.body.contrasenia
@@ -43,17 +44,24 @@ const userController = { // creamos un objeto literal para luego exportar
       });
 
     
+=======
+    processLogin: function (req,res) {
+      const email= req.body.email;
+      const password = req.body.password;
+>>>>>>> dc44458178db1a517565b5a8ce5d0b82f549e168
     },
 
+    ///CONTROLER PARA REGISTER 
     register: function (req, res) {
-      if (req.session && req.session.user) {
-        return res.redirect("/user/profile");
+      if (req.session && req.session.user) { // verifico si el usuario esta logueado 
+        return res.redirect("/user/profile"); // si esta logueado lo redirecciono a su perfil 
       }
     
-      return res.render("register");
+      return res.render("register"); // si no esta logueado renderizo la vista del registro 
     },
 
     processRegister: function (req, res) {
+      ///traigo los datos enviados del formulario de register.ejs
       const name = req.body.name;
       const email = req.body.email;
       const password = req.body.password;
@@ -74,15 +82,16 @@ const userController = { // creamos un objeto literal para luego exportar
         return res.send("La contraseña debe tener al menos 3 caracteres");
       }
     
-      // Luego verificamos si ya existe el email
+      // Luego verificamos si ya existe un usuario con  el email
       db.User.findOne({ where: { email: email } })
         .then(function (userFound) {
-          if (userFound) {
+          if (userFound) {  // si ya esta registrado lo doy mensaje 
             return res.send("Este email ya está registrado");
           }
     
-          const passHasheada = bcrypt.hashSync(password, 10);
+          const passHasheada = bcrypt.hashSync(password, 10);  //encripto la contra 
     
+          // creo nuevo usuario en la base de datos 
           db.User.create({
             email: email,
             contrasenia: passHasheada,
@@ -91,7 +100,7 @@ const userController = { // creamos un objeto literal para luego exportar
             foto: fotoPerfil,
           })
           .then(function () {
-            return res.redirect('/user/login');
+            return res.redirect('/user/login');  // si se crea redirijo a login 
           })
           .catch(function (error) {
             return res.send("Error al crear usuario: " + error);
@@ -126,6 +135,10 @@ const userController = { // creamos un objeto literal para luego exportar
           return res.send("Error al cargar el perfil: " + error);
       });
     },
+
+    logout: function(req, res){
+        res.
+    }
 }
 
 module.exports = userController;
