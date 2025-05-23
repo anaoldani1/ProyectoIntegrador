@@ -9,27 +9,26 @@ const userController = { // creamos un objeto literal para luego exportar
         if (req.session.user){ // si ya esta logueado no puede entrar a loguearse de nuevo
           return res.redirect("/user/profile")
         }
-        return res.render('login' // datos enviados a login.ejs para renderizarlos
-        //     {usuario: informacion.usuarios, 
-        //     productos: informacion.productos,
-        // }
-        )
+        return res.render('login',{usuario: informacion.usuarios, 
+          productos: informacion.productos,
+      });
     },
 
     processLogin: function (req, res) {
-      console.log("Email recibido:", req.body.email);
+      
 
-      const email = req.body.email
-      const password = req.body.contrasenia
+      let email = req.body.email
+      let password = req.body.contrasenia
+      
 
       db.User.findOne({ where: { email: email } })
-      
+     
       .then(function (user) {
         
         if (!user) {
           return res.send("Error, no existe una cuenta con este email.")
         }
-        console.log("user.contrasenia en la base:", user.contrasenia);
+   
 
         if (!bcrypt.compareSync(password, user.contrasenia)){
           return res.send("Error, contrasenia incorrecta")
