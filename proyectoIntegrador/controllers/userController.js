@@ -113,19 +113,28 @@ const userController = { // creamos un objeto literal para luego exportar
     
     profile: function(req, res) {
         if(req.session.user == undefined){
-            res.redirect("/user/login")
+            return res.redirect("/user/login")
         }else{
-            res.render("profile")
+            db.Product.findAll({where:{usuarioId: req.session.user.id}})
+            .then(function(productos){
+                res.render("profile", {productos: productos})
+            })
+            .catch(function (error) {
+                return res.send("Error al buscar mis productos " + error);
+              });
         }
     },
     
 
     logout: function(req, res){
-      req.session.destroy(function () {
-        res.clearCookie("recordame")
-        return res.redirect("/user/login")
-   })
-}
+        req.session.destroy(function(error){
+            if(error){
+                return res.send("error al cerrar sesion")
+            }
+            res.clearCookie("recordame")
+            return res.redirect("/user/login")
+        })
+    }
 }
 
 module.exports = userController;
