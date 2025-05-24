@@ -3,7 +3,9 @@
 
 //importa de db toda la informacion de los productos
 const informacion = require('../db/informacion');
-
+// importar db y Op 
+let db = require("../database/models");
+let op = db.Sequelize.Op;
     //req y res son metodos que contienen objetos literales
     ///Creo un objeto literal que tiene dos métodos: index y searchResults.
 const mainController = {
@@ -17,9 +19,21 @@ const mainController = {
     //muestra los resultados de busqeda 
     searchResults: function (req, res) {
         ///Maneja la ruta de resultados de búsqueda (/search). Renderiza la vista search-results.ejs, y también le manda los productos para que los pueda mostrar.
-        return res.render("search-results", { 
-            productos: informacion.productos, 
-        });
+
+        let searchTerm = req.query.search
+
+        db.Product.findAll({
+            where: [{nombreProducto: {[op.like] : "%" + searchTerm + "%"}}]
+        })
+        .then(function (resultados) {
+            let mensaje= undefined
+            if (resultados.length===0) {
+                mensaje="   No hay resultados para su criterio de búsqueda"
+                return res.render("search-results",{productos:resultados, mensaje: mensaje})
+            }else{
+                return res.render("search-results",{productos:resultados, mensaje: mensaje})
+            }
+        })
     },
 
 };
