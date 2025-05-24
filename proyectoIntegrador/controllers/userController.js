@@ -118,10 +118,14 @@ const userController = { // creamos un objeto literal para luego exportar
     
 
     logout: function(req, res){
-        req.session.destroy()
+      req.session.destroy(function () {
         res.clearCookie("recordame")
-        return res.redirect("/users/login")
-    }
+        return res.redirect("/")
+      })
+      
+      
+  }
+    
 }
 
 module.exports = userController;
