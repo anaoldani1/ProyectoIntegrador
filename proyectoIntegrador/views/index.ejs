@@ -52,11 +52,11 @@
 						<a href="/product/id/<%= products[i].id %>"> 
 							<figure class="product-box_image">
 								<!-- muestra la foto del producto -->
-								<img src="/images/products/<%= products[i].imagen %>" alt="<%= products.nombreProducto %>">
+								<img src="/images/products/<%= products[i].imagen %>" alt="<%= products[i].nombreProducto %>">
 							</figure>
 							<article class="product-box_data"> 
 								<!-- muestra nombre, descripcion y un texto q dice 12 comentarios -->
-								<h2><%= products[i].nombre  %></h2> 
+								<h2><%= products[i].nombreProducto  %></h2> 
 								<p><%= products[i].descripcion %></p>
 								<p>
 									Comentarios:
