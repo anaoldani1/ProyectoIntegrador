@@ -35,6 +35,8 @@ app.use(function (req, res, next) {
   if (req.session.user != undefined) {
     res.locals.user = req.session.user;
   }
+
+
   return next();
 })
 app.use(function (req, res, next) {
@@ -42,7 +44,6 @@ app.use(function (req, res, next) {
   if (req.cookies.recordame && req.session.user == undefined) {
     req.session.user = { email: req.cookies.recordame };
   }
-
   return next();
 });
 

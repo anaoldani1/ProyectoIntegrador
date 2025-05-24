@@ -5,9 +5,9 @@ const db = require("../database/models");
 const productController= {
     index: function(req,res) {// creamos un objeto literal para luego exportar
 
-        db.productos.findAll({
+        db.Productos.findAll({
             include: [
-                {association: "users"}
+                {association: "usuario"}
             ]
         })
             .then(function(resultados){
@@ -56,7 +56,7 @@ const productController= {
             usuarioId: req.session.user.id
         })
         .then(function(){
-            return res.redirect("/use/profile")
+            return res.redirect("/user/profile")
 
         })
         .catch(function (error) {
