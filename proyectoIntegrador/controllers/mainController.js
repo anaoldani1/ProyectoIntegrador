@@ -2,7 +2,7 @@
 //los metodos de cada controlador reciben los pedidos y procesan informacion
 
 //importa de db toda la informacion de los productos
-const informacion = require('../db/informacion');
+
 // importar db y Op 
 let db = require("../database/models");
 let op = db.Sequelize.Op;

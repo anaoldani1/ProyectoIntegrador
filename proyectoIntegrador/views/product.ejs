@@ -5,9 +5,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link width="" rel="shortcut icon" href="/images/logo-mercado-liebre.jpg" />
-
+	
 	<title> Mercado Liebre Argentina</title>
-	<!-- Font Awesome Stylesheet -->
+			<!-- Font Awesome Stylesheet -->
+			<!-- no se pone la carpeta public para el css -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 	<!-- Bootstrap Grid Stylesheet -->
 	<link rel="stylesheet" href="/stylesheet/bootstrap-grid.min.css">
@@ -21,54 +22,55 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Climate+Crisis&family=Encode+Sans+SC:wght@100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Yusei+Magic&display=swap" rel="stylesheet">
+
 </head>
 <body>
-	<!-- Header ..-->
+	<!-- Header -->
 		<!-- El codigo de header lo pase a partials para poder reutilizarlo y aca lo borre y deje esto -->
 		<%- include('./partials/header') %>
 	<!-- /Header -->
 	
-	<!-- product detail -->
+	<!-- Banner -->
+	<div class="banner">
+		<!-- no se pone /public, se sobrentiende -->
+		<img src="/images/img-home-banner.jpg" alt="Banner de ofertas"> 
+	</div>
+	<!-- /Banner -->
+
+	<!-- Novedades -->
 	<div class="container products-wrapper">
-		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%= product.nombreProducto %></h2> 
-			<p class="product-detail-description">
-				<!-- Link para agregar -->
-				<a href="/product/add">Agregar</a> 
-			</p>
-		</div>
-		<div class="product-detail">
-			<div class="row">
-				<article class="col-12 col-lg-8 product-detail-info">
-					<!-- muestro la imagen que tiene giardado ESE producto -->
-					<img src="/images/products/<%= product.imagen %>" alt="<%= product.nombreProducto %>" class="product-detail-description">
-					<p class="product-detail-description"> 
-						<%=product.descripcion%></p> 
-						<p class="product-detail-description">Publicacion por:
-							<a href="/user/profile/<%= product.usuario.id %>">
-								<%= product.usuario.email %>
-							</a>
-				</article>
-				<div class="col-12 col-lg-4">
-				<!-- aca hago lo de comentarios de detalle -->
-					<section class="comments">  
-						<!-- Recorre el array de comentarios con un bucle. -->
-						<!-- Aca hacer comentarios -->
-					</section>
-					<form class="form" action="/" method="get">
-						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
-						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
-					</form>
-					<hr>
-				</div>
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Productos</h2>
 			</div>
+			<!-- Show the "ultimos" products -->
+			<!-- armamos un for que recorre 10 productos -->
+		<% for( let i = 0; i < 10; i++ ) { %>
+				<div class="col-12 col-sm-6 col-lg-3">
+					<section class="product-box">
+						<!-- haces el link q cuando clickeas te lleve siempre al mismo -->
+						<a href="/product/id/1"> 
+							<figure class="product-box_image">
+								<!-- muestra la foto del producto -->
+								<img src="/images/products/<%= productos[i].imagen %>" alt="cafetera moulinex">
+							</figure>
+							<article class="product-box_data"> 
+								<!-- muestra nombre, descripcion y un texto q dice 12 comentarios -->
+								<h2><%= productos[i].nombre  %></h2> 
+								<p><%= productos[i].descripcion %></p>
+								<p>Comentarios: 12</p>
+							</article>
+						</a>
+					</section>
+				</div>
+		<% } %>
+				
 		</div>
 	</div>
-	<!-- /product detail -->
+
 
 	<!-- footer -->
 	<%- include('./partials/footer') %>
 	<!-- /footer -->
-
 </body>	
 </html>
