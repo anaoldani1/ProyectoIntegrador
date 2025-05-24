@@ -36,7 +36,7 @@
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
 					<h1 class="main-title">
-						 <!-- nombre del usuario , ver con que nombre pusieron en appjs los datos de session-->
+						 <%= user.email %>
 						<a href="/"> <!-- era a /profile/profileedit  pero para que no rompa lo mande a home-->
 							<i class="fas fa-cog"></i>
 						</a>
@@ -45,10 +45,11 @@
 				</div>
 				<div>
 					<ul class="">
-						<%= user.email %>
-						<li>8 productos</li> <!-- voy a tener que hacer un for con contador para ver cuantos productos publico -->
-						<li>200 seguidores</li>
-						<li>300 comentarios</li>
+						<% let contador = 0 %>
+						<% for( let index = 0; index < user.length; index++ ) { %>
+							<% contador +=1 %>
+						<% } %>
+						<li><%=contador %> productos</li> <!-- voy a tener que hacer un for con contador para ver cuantos productos publico -->
 					</ul>
 				</div>
 			</div>
@@ -57,7 +58,9 @@
 	<!-- /Datos del usuario -->
 
 	<!-- Mis productos -->
-	
+	<% for( let index = 0; index < array.length; index++ ) { %>
+		
+	<% } %>
 	<!-- /Mis productos -->
 
 

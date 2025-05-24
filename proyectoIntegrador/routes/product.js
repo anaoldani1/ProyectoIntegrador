@@ -10,5 +10,7 @@ router.get("/id/:id", productController.filtrarId);
 //Usuario entra a /product/add, ejecuta la función add que muestra el formulario para agregar un nuevo producto.
 router.get('/add', productController.add);
 
+router.post("/add", productController.processAdd)
+
 module.exports = router;
 
