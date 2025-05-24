@@ -19,10 +19,7 @@ const productController= {
             })
         //envia la informacion de productos a product.ejs para poder renderizarlo, es un array de objetos literales
             //req y res son metodos que contienen objetos literales
-        return res.render("product", {
-            //le pasa todos los productos..
-            info: informacion.productos
-        }) 
+        return res.render("product") 
 
         
     },
