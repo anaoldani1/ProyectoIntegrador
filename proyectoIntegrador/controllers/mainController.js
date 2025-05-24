@@ -23,7 +23,8 @@ const mainController = {
         let searchTerm = req.query.search
 
         db.Product.findAll({
-            where: [{nombreProducto: {[op.like] : "%" + searchTerm + "%"}}]
+            where: [{nombreProducto: {[op.like] : "%" + searchTerm + "%"}}],
+            include: [{association: "usuario"}]
         })
         .then(function (resultados) {
             let mensaje= undefined

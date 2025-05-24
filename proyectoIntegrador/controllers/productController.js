@@ -28,15 +28,17 @@ const productController= {
     },
     //muestra un producto especifico
     filtrarId: function (req,res) {
-        //envia a product.ejs el resultado que da el metodo filtrarId al darle el id que busca en la ruta, y la informacion de comentarios para poder renderizarlo
-        let idBuscado= req.params.id;
-        let ObjAnswer= informacion.filtrarId(idBuscado)
-        
-        return res.render("product",
-        {
-            detalle: ObjAnswer, //le manda el producto q encontramos
-            comentarios: informacion.comentarios //los comentarios q vienem de ahi
+       
+        let idBuscado = req.params.id
+        db.Product.findByPk(idBuscado,{
+            include: [{ association: "usuario" }]
         })
+
+        .then(function (resultado) {
+            return res.render("product",{product:resultado})
+        })
+
+        
     },
     
     add: function(req, res){

@@ -31,7 +31,7 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title">Nombre del producto</h2> 
+			<h2 class="products-title"><%= product.nombreProducto %></h2> 
 			<p class="product-detail-description">
 				<!-- Link para agregar -->
 				<a href="/product/add">Agregar</a> 
@@ -41,29 +41,19 @@
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
 					<!-- muestro la imagen que tiene giardado ESE producto -->
-					<img src="/images/products/<%= detalle.imagen %>" alt="" class="product-detail-img">
-					<p class="product-detail-description">
-						<%=detalle.descripcion%></p> 
+					<img src="/images/products/<%= product.imagen %>" alt="<%= product.nombreProducto %>" class="product-detail-description">
+					<p class="product-detail-description"> 
+						<%=product.descripcion%></p> 
+						<p class="product-detail-description">Publicacion por:
+							<a href="/user/profile/<%= product.usuario.id %>">
+								<%= product.usuario.email %>
+							</a>
 				</article>
 				<div class="col-12 col-lg-4">
 				<!-- aca hago lo de comentarios de detalle -->
 					<section class="comments">  
 						<!-- Recorre el array de comentarios con un bucle. -->
-						<% for (let i = 0; i < comentarios.length; i++) { %>
-							<article>
-								<!-- muestro foto de usuario del que hizo el comentario -->
-								<img src="<%= comentarios[i].fotoUsuario %>" alt="">
-								<div class="data">
-									<p class="user">
-										<!-- Imagen del usuario que comentó.
-										Nombre del usuario que comentó.
-										Texto del comentario. -->
-										<strong><a href="/user/profile"><%= comentarios[i].nombreUsuario %>:</a></strong>
-										<%= comentarios[i].comentario %>
-									</p>
-								</div>
-							</article>
-						<% } %>
+						<!-- Aca hacer comentarios -->
 					</section>
 					<form class="form" action="/" method="get">
 						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
