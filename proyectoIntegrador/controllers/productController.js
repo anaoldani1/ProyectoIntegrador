@@ -1,5 +1,3 @@
-////PARTE DE DETALLE--> 10
-
 //Importa los datos de productos, usuarios y comentarios 
 const db = require("../database/models");
 
@@ -42,13 +40,29 @@ const productController= {
     },
     
     add: function(req, res){
-        return res.render("product-add", {// la envio a productadd.ejs para que pueda renderizarse
-            productos: informacion.productos,
-            usuario: informacion.usuarios
+        if (req.session.user == undefined){ // si no esta logueado, no puede subir un producto entonces se va a login
+            return res.redirect("/user/login") 
+        }else{
+            return res.render("product-add")
+        }
+        
+    },
+
+    processAdd: function(req,res){
+        db.Product.create({
+            imagen: req.body.imagen,
+            nombreProducto: req.body.nombre,
+            descripcion: req.body.descripcion,
+            usuarioId: req.session.user.id
         })
+        .then(function(){
+            return res.redirect("/use/profile")
+
+        })
+        .catch(function (error) {
+            return res.send("Error al agregar producto" + error);
+          });
     }
-
-
 }
 
 module.exports = productController;

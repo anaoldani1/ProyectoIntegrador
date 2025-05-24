@@ -1,4 +1,3 @@
-const informacion = require('../db/informacion') // requiere la informadion de db (el objeto literal informacion)
 const db = require('../database/models');
 const bcrypt = require('bcryptjs'); 
 
@@ -63,7 +62,6 @@ const userController = { // creamos un objeto literal para luego exportar
 
     processRegister: function (req, res) {
       ///traigo los datos enviados del formulario de register.ejs
-      const name = req.body.name;
       const email = req.body.email;
       const password = req.body.password;
       const fechaNacimiento = req.body.fechaNacimiento;
@@ -110,22 +108,24 @@ const userController = { // creamos un objeto literal para luego exportar
         .catch(function (error) {
           return res.send("Error al validar email: " + error);
         });
+
     },
     
     profile: function(req, res) {
-      res.render("profile");
+        if(req.session.user == undefined){
+            res.redirect("/user/login")
+        }else{
+            res.render("profile")
+        }
     },
     
 
     logout: function(req, res){
       req.session.destroy(function () {
         res.clearCookie("recordame")
-        return res.redirect("/")
-      })
-      
-      
-  }
-    
+        return res.redirect("/user/login")
+   })
+}
 }
 
 module.exports = userController;
