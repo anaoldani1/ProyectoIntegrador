@@ -27,7 +27,7 @@
 <body>
 	<!-- Header -->
 		<!-- El codigo de header lo pase a partials para poder reutilizarlo y aca lo borre y deje esto -->
-		<%- include('./partials/header') %>
+		<%- include('./partials/headerLogueado') %>
 	<!-- /Header -->
 	
 	<!-- Banner -->
@@ -41,24 +41,27 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Productos</h2>
+				<h2 class="products-title"><%= products.nombreProducto %></h2>
 			</div>
 			<!-- Show the "ultimos" products -->
 			<!-- armamos un for que recorre 10 productos -->
-		<% for( let i = 0; i < 10; i++ ) { %>
+		<% for( let i = 0; i < products.length; i++ ) { %>
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
 						<!-- haces el link q cuando clickeas te lleve siempre al mismo -->
-						<a href="/product/id/1"> 
+						<a href="/product/id/<%= products[i].id %>"> 
 							<figure class="product-box_image">
 								<!-- muestra la foto del producto -->
-								<img src="/images/products/<%= productos[i].imagen %>" alt="cafetera moulinex">
+								<img src="/images/products/<%= products[i].imagen %>" alt="<%= products.nombreProducto %>">
 							</figure>
 							<article class="product-box_data"> 
 								<!-- muestra nombre, descripcion y un texto q dice 12 comentarios -->
-								<h2><%= productos[i].nombre  %></h2> 
-								<p><%= productos[i].descripcion %></p>
-								<p>Comentarios: 12</p>
+								<h2><%= products[i].nombre  %></h2> 
+								<p><%= products[i].descripcion %></p>
+								<p>
+									Comentarios:
+									<!-- hacer copmentarios dinamicos -->
+								</p>
 							</article>
 						</a>
 					</section>

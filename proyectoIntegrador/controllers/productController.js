@@ -1,5 +1,3 @@
-////PARTE DE DETALLE--> 10
-
 //Importa los datos de productos, usuarios y comentarios 
 const db = require("../database/models");
 
@@ -7,9 +5,9 @@ const db = require("../database/models");
 const productController= {
     index: function(req,res) {// creamos un objeto literal para luego exportar
 
-        db.productos.findAll({
+        db.Productos.findAll({
             include: [
-                {association: "users"}
+                {association: "usuario"}
             ]
         })
             .then(function(resultados){
@@ -30,25 +28,43 @@ const productController= {
     },
     //muestra un producto especifico
     filtrarId: function (req,res) {
-        //envia a product.ejs el resultado que da el metodo filtrarId al darle el id que busca en la ruta, y la informacion de comentarios para poder renderizarlo
-        let idBuscado= req.params.id;
-        let ObjAnswer= informacion.filtrarId(idBuscado)
-        
-        return res.render("product",
-        {
-            detalle: ObjAnswer, //le manda el producto q encontramos
-            comentarios: informacion.comentarios //los comentarios q vienem de ahi
+       
+        let idBuscado = req.params.id
+        db.Product.findByPk(idBuscado,{
+            include: [{ association: "usuario" }]
         })
+
+        .then(function (resultado) {
+            return res.render("product",{product:resultado})
+        })
+
+        
     },
     
     add: function(req, res){
-        return res.render("product-add", {// la envio a productadd.ejs para que pueda renderizarse
-            productos: informacion.productos,
-            usuario: informacion.usuarios
+        if (req.session.user == undefined){ // si no esta logueado, no puede subir un producto entonces se va a login
+            return res.redirect("/user/login") 
+        }else{
+            return res.render("product-add")
+        }
+        
+    },
+
+    processAdd: function(req,res){
+        db.Product.create({
+            imagen: req.body.imagen,
+            nombreProducto: req.body.nombre,
+            descripcion: req.body.descripcion,
+            usuarioId: req.session.user.id
         })
+        .then(function(){
+            return res.redirect("/user/profile")
+
+        })
+        .catch(function (error) {
+            return res.send("Error al agregar producto" + error);
+          });
     }
-
-
 }
 
 module.exports = productController;

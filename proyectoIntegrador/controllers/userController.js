@@ -1,4 +1,3 @@
-const informacion = require('../db/informacion') // requiere la informadion de db (el objeto literal informacion)
 const db = require('../database/models');
 const bcrypt = require('bcryptjs'); 
 
@@ -6,57 +5,48 @@ const userController = { // creamos un objeto literal para luego exportar
 
     //req y res son metodos que contienen objetos literales
     login: function(req, res){  
-        if (req.session.user){ // si ya esta logueado no puede entrar a loguearse de nuevo
+        if (req.session.user != undefined){ // si ya esta logueado no puede entrar a loguearse de nuevo
           return res.redirect("/user/profile")
         }
-        return res.render('login',{usuario: informacion.usuarios, 
-          productos: informacion.productos,
-      });
+        return res.render('login');
     },
 
     processLogin: function (req, res) {
       
-
-      let email = req.body.email
-      let password = req.body.contrasenia
+      let userInfo={
+        email : req.body.email,
+        password : req.body.contrasenia,
+        recordarme:req.body.checkbox
+      }
       
-
-      db.User.findOne({ where: { email: email } })
+      db.User.findOne({ where: { email: userInfo.email } })
      
-      .then(function (user) {
+      .then(function (resultado) {
         
-        if (!user) {
+        if (!resultado) {
           return res.send("Error, no existe una cuenta con este email.")
         }
    
-
-        if (!bcrypt.compareSync(password, user.contrasenia)){
+        if (!bcrypt.compareSync(userInfo.password, resultado.contrasenia)){
           return res.send("Error, contrasenia incorrecta")
         }
 
-        req.session.user = user
+        req.session.user = resultado
 
-        if (req.body.checkbox) {
-          res.cookie("recordame", user.email, { maxAge: 1000 * 60 * 5});
-        }
+      if (userInfo.recordarme != undefined) {
+        res.cookie("recordame", resultado, { maxAge: 1000 * 60 * 5}); ///resultado.email
+      }
+      return res.redirect("/user/profile");
+    })
+    .catch(function (err) {
+      return res.send("Error" + err);
+    });
 
-        return res.redirect("/user/profile");
-
-      })
-      .catch(function (err) {
-        
-        return res.send("Error 1232wkwekdr");
-      });
-      //.catch(function (err) {
-      //  return res.send("Error");
-      //});
-
-    
     },
 
     ///CONTROLER PARA REGISTER 
     register: function (req, res) {
-      if (req.session && req.session.user) { // verifico si el usuario esta logueado 
+      if (req.session.user != undefined) { // verifico si el usuario esta logueado 
         return res.redirect("/user/profile"); // si esta logueado lo redirecciono a su perfil 
       }
     
@@ -65,7 +55,6 @@ const userController = { // creamos un objeto literal para luego exportar
 
     processRegister: function (req, res) {
       ///traigo los datos enviados del formulario de register.ejs
-      const name = req.body.name;
       const email = req.body.email;
       const password = req.body.password;
       const fechaNacimiento = req.body.fechaNacimiento;
@@ -115,16 +104,28 @@ const userController = { // creamos un objeto literal para luego exportar
     },
     
     profile: function(req, res) {
-      res.render("profile", {
-        usuario: req.session.user
-      });
+        if(req.session.user == undefined){
+            return res.redirect("/user/login")
+        }else{
+            db.Product.findAll({where:{usuarioId: req.session.user.id}})
+            .then(function(productos){
+                res.render("profile", {productos: productos})
+            })
+            .catch(function (error) {
+                return res.send("Error al buscar mis productos " + error);
+              });
+        }
     },
     
 
     logout: function(req, res){
-        req.session.destroy()
-        res.clearCookie("recordame")
-        return res.redirect("/users/login")
+        req.session.destroy(function(error){
+            if(error){
+                return res.send("error al cerrar sesion")
+            }
+            res.clearCookie("recordame")
+            return res.redirect("/")
+        })
     }
 }
 

@@ -35,12 +35,17 @@ app.use(function (req, res, next) {
   if (req.session.user != undefined) {
     res.locals.user = req.session.user;
   }
+  return next();
+})
 
+app.use(function (req, res, next) {
   // osea si existe una cookie del checkbox pero no hay nadie loguado usamos el mail guardado en la cookie para loguarlo
-  if (req.cookies.recordame && req.session.user == undefined) {
-    req.session.user = { email: req.cookies.recordame };
+  if (req.cookies.recordame != undefined && req.session.user == undefined) {
+    res.locals.user = req.cookies.recordame
+    req.session.user = req.cookies.recordame
+    //res.locals.user = 
+    //req.session.user ={ email: req.cookies.recordame };
   }
-
   return next();
 });
 
