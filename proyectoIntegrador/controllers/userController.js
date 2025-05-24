@@ -5,7 +5,7 @@ const userController = { // creamos un objeto literal para luego exportar
 
     //req y res son metodos que contienen objetos literales
     login: function(req, res){  
-        if (req.session.user){ // si ya esta logueado no puede entrar a loguearse de nuevo
+        if (req.session.user != undefined){ // si ya esta logueado no puede entrar a loguearse de nuevo
           return res.redirect("/user/profile")
         }
         return res.render('login');
@@ -15,7 +15,8 @@ const userController = { // creamos un objeto literal para luego exportar
       
       let userInfo={
         email : req.body.email,
-        password : req.body.contrasenia
+        password : req.body.contrasenia,
+        recordarme:req.body.checkbox
       }
       
       db.User.findOne({ where: { email: userInfo.email } })
@@ -26,34 +27,26 @@ const userController = { // creamos un objeto literal para luego exportar
           return res.send("Error, no existe una cuenta con este email.")
         }
    
-
         if (!bcrypt.compareSync(userInfo.password, resultado.contrasenia)){
           return res.send("Error, contrasenia incorrecta")
         }
 
         req.session.user = resultado
 
-        if (req.body.checkbox) {
-          res.cookie("recordame", resultado.email, { maxAge: 1000 * 60 * 5});
-        }
+      if (userInfo.recordarme != undefined) {
+        res.cookie("recordame", resultado, { maxAge: 1000 * 60 * 5}); ///resultado.email
+      }
+      return res.redirect("/user/profile");
+    })
+    .catch(function (err) {
+      return res.send("Error" + err);
+    });
 
-        return res.redirect("/user/profile");
-
-      })
-      .catch(function (err) {
-        
-        return res.send("Error 1232wkwekdr");
-      });
-      //.catch(function (err) {
-      //  return res.send("Error");
-      //});
-
-    
     },
 
     ///CONTROLER PARA REGISTER 
     register: function (req, res) {
-      if (req.session && req.session.user) { // verifico si el usuario esta logueado 
+      if (req.session.user != undefined) { // verifico si el usuario esta logueado 
         return res.redirect("/user/profile"); // si esta logueado lo redirecciono a su perfil 
       }
     
@@ -108,7 +101,6 @@ const userController = { // creamos un objeto literal para luego exportar
         .catch(function (error) {
           return res.send("Error al validar email: " + error);
         });
-
     },
     
     profile: function(req, res) {
@@ -132,7 +124,7 @@ const userController = { // creamos un objeto literal para luego exportar
                 return res.send("error al cerrar sesion")
             }
             res.clearCookie("recordame")
-            return res.redirect("/user/login")
+            return res.redirect("/")
         })
     }
 }
