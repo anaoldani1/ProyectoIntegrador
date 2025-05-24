@@ -43,8 +43,6 @@ app.use(function (req, res, next) {
   if (req.cookies.recordame != undefined && req.session.user == undefined) {
     res.locals.user = req.cookies.recordame
     req.session.user = req.cookies.recordame
-    //res.locals.user = 
-    //req.session.user ={ email: req.cookies.recordame };
   }
   return next();
 });
