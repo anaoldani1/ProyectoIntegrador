@@ -1,13 +1,15 @@
 //Importa los datos de productos, usuarios y comentarios 
 const db = require("../database/models");
 
-//creo un objeto literal que contiene tres métodos: index, filtrarId, y add.
+//creo un objeto literal que contiene todos los metodos 
 const productController= {
+
+    //metodo que muestra todos los productos 
     index: function(req,res) {
 
-        db.Productos.findAll({
+        db.Productos.findAll({ //busco en la base de datos TODOS los productos incluyendo la info del usuario que ls publico 
             include: [
-                {association: "usuario"}
+                {association: "usuario"} // Incluye el modelo relacionado: el usuario creador
             ]
         })
         .then(function(resultados){
@@ -20,17 +22,21 @@ const productController= {
         return res.render("product");
     },
 
-    //muestra un producto especifico
+    //muestra un producto especifico por id 
     filtrarId: function (req,res) {
-        let idBuscado = req.params.id;
+        let idBuscado = req.params.id; //capturo el id de la url 
+
+        //busco el prod x su id y tmb incluyo el usuario q lo creo 
         db.Product.findByPk(idBuscado, {
             include: [{ association: "usuario" }]
         })
         .then(function (resultado) {
+            // Si lo encuentra, lo muestra en la vista product
             return res.render("product", {product: resultado});
         });
     },
     
+    //muesttro form para agregar nuevo producto 
     add: function(req, res){
         if (req.session.user == undefined){
             return res.redirect("/user/login");
@@ -39,14 +45,17 @@ const productController= {
         }
     },
 
+    //form para ceracion de un nuevo producto 
     processAdd: function(req,res){
         db.Product.create({
+            // Crea un nuevo producto en la db con los datos del formulario
             imagen: req.body.imagen,
             nombreProducto: req.body.nombre,
             descripcion: req.body.descripcion,
-            usuarioId: req.session.user.id
+            usuarioId: req.session.user.id // id del usaurio logueado q es el creador del producto 
         })
         .then(function(){
+             // Si se creó correctamente, redirige al perfil del usuario
             return res.redirect("/user/profile");
         })
         .catch(function (error) {
