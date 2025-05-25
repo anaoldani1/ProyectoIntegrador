@@ -2,12 +2,11 @@
 const db = require("../database/models");
 
 //creo un objeto literal que contiene todos los metodos 
-const productController= {
+const productController = {
 
     //metodo que muestra todos los productos 
     index: function(req,res) {
-
-        db.Productos.findAll({ //busco en la base de datos TODOS los productos incluyendo la info del usuario que ls publico 
+        db.Productos.findAll({ //busco en la base de datos TODOS los productos incluyendo la info del usuario que los publico 
             include: [
                 {association: "usuario"} // Incluye el modelo relacionado: el usuario creador
             ]
@@ -18,25 +17,42 @@ const productController= {
         .catch(function(error){
             return res.send(error);
         });
-
-        return res.render("product");
     },
 
     //muestra un producto especifico por id 
-    filtrarId: function (req,res) {
-        let idBuscado = req.params.id; //capturo el id de la url 
-
-        //busco el prod x su id y tmb incluyo el usuario q lo creo 
+    filtrarId: function (req, res) {
+        // Capturamos el ID del producto desde la URL (/productos/detalle/5)
+        let idBuscado = req.params.id;
+    
+        // Buscamos el producto por su ID en la base de datos
         db.Product.findByPk(idBuscado, {
-            include: [{ association: "usuario" }]
+                  // Incluimos al usuario que publicó el producto
+            include: [
+                { association: "usuario" },
+                {
+                      // Incluimos los comentarios asociados a ese producto
+                // Y por cada comentario, también incluimos al usuario que lo escribió
+                    association: "comentarios",
+                    include: [{ association: "usuario" }]
+                }
+            ],
+            order: [[{ model: db.Comment, as: "comentarios" }, "createdAt", "DESC"]] // Ordenamos los comentarios de más nuevos a más viejos usando createdAt
         })
+        // Si se encuentra el producto y todo sale bien:
         .then(function (resultado) {
-            // Si lo encuentra, lo muestra en la vista product
-            return res.render("product", {product: resultado});
+             // Renderizamos la vista "product-detail.ejs"
+            // Enviamos el producto y los datos de sesión para saber si el usuario está logueado
+            return res.render("product-detail", {
+                product: resultado,
+                session: req.session
+            });
+        })
+        .catch(function (error) {
+            return res.send(error);
         });
     },
     
-    //muesttro form para agregar nuevo producto 
+    //muestro form para agregar nuevo producto 
     add: function(req, res){
         if (req.session.user == undefined){
             return res.redirect("/user/login");
@@ -45,7 +61,7 @@ const productController= {
         }
     },
 
-    //form para ceracion de un nuevo producto 
+    //form para crear un nuevo producto 
     processAdd: function(req,res){
         db.Product.create({
             // Crea un nuevo producto en la db con los datos del formulario
@@ -61,17 +77,18 @@ const productController= {
         .catch(function (error) {
             return res.send("Error al agregar producto" + error);
         });
-    }, 
+    },
 
+    //procesa la creación de un comentario sobre un producto
     agregarComentario: function (req, res) {
-        //verifico si el usuario no esta logueado (no hay en session)
+          //verifico si el usuario no esta logueado (no hay en session)
         if (!req.session.user) {
             return res.redirect("/user/login"); //si no esta log lo redirigo a login
         }
-    
+
         //si esta logueado creo la tabla en base de datos 
         db.Comment.create({
-            comentario: req.body.comentario, // Contenido del comentario enviado desde el formulario
+            comentario: req.body.comentario,  // Contenido del comentario enviado desde el formulario
             productosId: req.params.id, //Id del prod del comment
             usuariosId: req.session.user.id, //id del usuario que hace el comment 
             createdAt: new Date() //pongo la fecha q se hace el comment 
@@ -83,6 +100,6 @@ const productController= {
             return res.send("Error al agregar comentario: " + error);
         });
     }
-}
+};
 
 module.exports = productController;
