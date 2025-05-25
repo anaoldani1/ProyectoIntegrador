@@ -12,5 +12,8 @@ router.get('/add', productController.add);
 
 router.post("/add", productController.processAdd)
 
+//ruta de agregar comentario 
+router.post('/detalle/:id/comentario', productController.agregarComentario); //post xq envia datos --> unción del controlador que se va a ejecutar cuando alguien envíe el comentario y  guarda el comentario en la base de datos.
+
 module.exports = router;
 
