@@ -52,6 +52,27 @@ const productController= {
         .catch(function (error) {
             return res.send("Error al agregar producto" + error);
         });
+    }, 
+
+    agregarComentario: function (req, res) {
+        //verifico si el usuario no esta logueado (no hay en session)
+        if (!req.session.user) {
+            return res.redirect("/user/login"); //si no esta log lo redirigo a login
+        }
+    
+        //si esta logueado creo la tabla en base de datos 
+        db.Comment.create({
+            comentario: req.body.comentario, // Contenido del comentario enviado desde el formulario
+            productosId: req.params.id, //Id del prod del comment
+            usuariosId: req.session.user.id, //id del usuario que hace el comment 
+            createdAt: new Date() //pongo la fecha q se hace el comment 
+        })
+        .then(function () {
+            return res.redirect(`/productos/detalle/${req.params.id}`);
+        })
+        .catch(function (error) {
+            return res.send("Error al agregar comentario: " + error);
+        });
     }
 }
 
