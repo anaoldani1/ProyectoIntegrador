@@ -58,10 +58,16 @@
 								<!-- muestra nombre, descripcion y un texto q dice 12 comentarios -->
 								<h2><%= products[i].nombreProducto  %></h2> 
 								<p><%= products[i].descripcion %></p>
+								<p>Publicado por:
+									<a href="/user/profile/<%= products[i].usuario.id %>">
+									  <%= products[i].usuario.email %>
+									</a>
+								  </p>
 								<p>
 									Comentarios:
 									<!-- hacer copmentarios dinamicos -->
 								</p>
+								
 							</article>
 						</a>
 					</section>
