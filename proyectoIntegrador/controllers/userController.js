@@ -104,40 +104,30 @@ const userController = { // creamos un objeto literal para luego exportar
     },
     
     profile: function(req, res) {
-      if (req.params.id===undefined){
-          if(req.session.user == undefined){
-            return res.redirect("/user/login")
-          }else{
-            db.User.findByPk(req.session.user.id, {
-              include: [
-                { association: "productos" }]  ///lo incluyo para poder usar la relacion que tiemne con la tabla
-            })
-            .then(function(resultados){
-                res.render("profile", {
-                  productos: resultados.productos, //uso su relacion con la tabla
-                  user: resultados
-                })
-            })
-            .catch(function (error) {
-                return res.send("Error al buscar mis productos " + error);
-            });
-      }
-      }else{
-        let idBuscado = req.params.id
+      let idBuscado = req.params.id;
+
+      if (idBuscado == undefined) {
+        idBuscado = req.session.user.id;
+      } 
+
         db.User.findByPk(idBuscado, {
           include: [
             { association: "productos" }]
         })
         .then (function (resultado) {
           return res.render("profile", {
+            
             productos: resultado.productos,
-            user:resultado
+            usuarioPerfil:resultado
           })
+        })
+        .catch(function(err) {
+          return res.send(err)
         })
         
       }
         
-    },
+    ,
     
 
     logout: function(req, res){
