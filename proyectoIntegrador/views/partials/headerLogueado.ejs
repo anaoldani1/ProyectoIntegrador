@@ -53,7 +53,7 @@
 				</ul>
 	
 				<ul class="right-navbar">
-					<% if (locals.user) { %>
+					<% if (locals.user != undefined) { %>
 						<li>Hola, Bienvenida <%= locals.user.email %><i class="fas fa-user"></i></li>
 						<li><a href="/user/profile">Mi Perfil<i class="fas fa-user"></i></a>
 						</li>
