@@ -18,7 +18,7 @@
   /* font-family: 'Orbitron', sans-serif; */
   font-size: 35px;
   color: red;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 
 }
 
@@ -102,7 +102,7 @@ a{
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
-  background-color: lightgray;
+  background-color: black;
   color: var(--blanco);
 }
 
@@ -500,6 +500,8 @@ textarea.form-input {
   padding: 15px;
 }
 
+
+
 /*====== Profile ======*/
 .info-usuario{
   border-bottom: 1px solid #ccc;
@@ -579,4 +581,5 @@ textarea.form-input {
     margin: auto;
   }
 }
+
 
