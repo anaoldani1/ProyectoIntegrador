@@ -107,7 +107,7 @@ const userController = { // creamos un objeto literal para luego exportar
         if(req.session.user == undefined){
             return res.redirect("/user/login")
         }else{
-            db.Product.findAll({where:{usuarioId: req.session.user.id}})
+            db.Product.findByPk(req.session.user.id)
             .then(function(productos){
                 res.render("profile", {productos: productos})
             })
@@ -115,8 +115,7 @@ const userController = { // creamos un objeto literal para luego exportar
                 return res.send("Error al buscar mis productos " + error);
               });
         }
-    },
-    
+    },    
 
     logout: function(req, res){
         req.session.destroy(function(error){
