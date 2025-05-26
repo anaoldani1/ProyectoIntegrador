@@ -106,8 +106,11 @@ const userController = { // creamos un objeto literal para luego exportar
     profile: function(req, res) {
       let idBuscado = req.params.id;
 
+      
+
       if (idBuscado == undefined) {
         idBuscado = req.session.user.id;
+        console.log(idBuscado);
       } 
 
         db.User.findByPk(idBuscado, {
