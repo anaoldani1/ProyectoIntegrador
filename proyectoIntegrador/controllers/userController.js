@@ -107,12 +107,15 @@ const userController = { // creamos un objeto literal para luego exportar
       if (req.params.id===undefined){
           if(req.session.user == undefined){
             return res.redirect("/user/login")
-        }else{
-            db.User.findByPk(req.session.user.id)
+          }else{
+            db.User.findByPk(req.session.user.id, {
+              include: [
+                { association: "productos" }]  ///lo incluyo para poder usar la relacion que tiemne con la tabla
+            })
             .then(function(resultados){
                 res.render("profile", {
-                  productos: resultados.productos 
-              
+                  productos: resultados.productos, //uso su relacion con la tabla
+                  user: resultados
                 })
             })
             .catch(function (error) {
@@ -126,7 +129,6 @@ const userController = { // creamos un objeto literal para luego exportar
             { association: "productos" }]
         })
         .then (function (resultado) {
-          
           return res.render("profile", {
             productos: resultado.productos,
             user:resultado
