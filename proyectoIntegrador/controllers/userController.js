@@ -104,7 +104,8 @@ const userController = { // creamos un objeto literal para luego exportar
     },
     
     profile: function(req, res) {
-        if(req.session.user == undefined){
+      if (req.params.id===undefined){
+          if(req.session.user == undefined){
             return res.redirect("/user/login")
         }else{
             db.Product.findAll({where:{usuarioId: req.session.user.id}})
@@ -113,8 +114,24 @@ const userController = { // creamos un objeto literal para luego exportar
             })
             .catch(function (error) {
                 return res.send("Error al buscar mis productos " + error);
-              });
-        }
+            });
+      }
+      }else{
+        let idBuscado = req.params.id
+        db.User.findByPk(idBuscado, {
+          include: [
+            { association: "productos" }]
+        })
+        .then (function (resultado) {
+          
+          return res.render("profile", {
+            productos: resultado.productos,
+            user:resultado
+          })
+        })
+        
+      }
+        
     },
     
 
