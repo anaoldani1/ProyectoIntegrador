@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link width="" rel="shortcut icon" href="/images/logo-mercado-liebre.jpg" />
 	
-	<title> Mercado Liebre Argentina</title>
+	<title> F1-Zone</title>
 			<!-- Font Awesome Stylesheet -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 	<!-- Bootstrap Grid Stylesheet -->
@@ -31,12 +31,12 @@
 	<section class="info-usuario container products-wrapper">
 		<div class="row">
 			<div class="img-container offset-3 col-2">
-				<img src="/images/users/<%= usuarioPerfil.foto %>" alt="foto de perfil" class="foto-perfil">
+				<img src="/images/users/<%= user.foto %>" alt="foto de perfil" class="foto-perfil">
 			</div> 
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
 					<h1 class="main-title">
-						 <%= usuarioPerfil.email %>
+						 <%= user.email %>
 						<a href="/"> <!-- era a /profile/profileedit pero esta asi para que no rompa -->
 							<i class="fas fa-cog"></i>
 						</a>
@@ -66,7 +66,7 @@
                         <a href="/product/id/<%=productos[index].id %>">
                             <figure class="product-box_image"> 
                                 <!-- Muestra la imagen del producto i, usando el nombre de imagen que viene en productos[i].imagen. -->
-                                <img src="/" alt="<%=productos[index].nombreProducto %>"> <!-- PONER LINK IMAGEN-->
+                                <img src="/" alt="<%=productos[index].nombreProducto %>"> <!-- PONER LINK-->
                             </figure>
                             <article class="product-box_data">
                                 <h2><%= productos[index].nombre  %></h2>
