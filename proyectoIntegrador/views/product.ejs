@@ -55,39 +55,41 @@
                <div class="col-12 col-lg-4">
                <!-- aca hago lo de comentarios de detalle -->
                    
-                       <!-- Recorre el array de comentarios con un bucle. -->
-                       <!-- Aca hacer comentarios -->
-                       <section class="comments"> <!-- Sección donde muestro los coments -->
+                       <!-- Aca voy hacer el punto de comentarios -->
+                       <section class="comments"> 
                         <h4>Comentarios</h4>
                     
                         <% if (product.comentarios && product.comentarios.length > 0) { %> <!-- Si hay comentarios entra  -->
                             <ul> 
-                                <% product.comentarios.forEach(function(comentario) { %> <!-- Recorre cada comentario -->
-                                    <li>
-                                        <strong>
-                                            <a href="/user/profile/<%= comentario.usuario.id %>"> <!-- Link al perfil del usuario que comentó -->
-                                                <%= comentario.usuario.name %> <!-- Muestra el nombre del usuario -->
-                                            </a>
-                                        </strong>
-                                        comentó el <%= new Date(comentario.createdAt) %>: <!-- Muestra la fecha del coment -->
-                                        <br>
-                                        <%= comentario.comentario %> <!-- Muestra el texto del comentario -->
-                                    </li>
-                                <% }) %>
+                               
+                                <% for (let i = 0; i < product.comentarios.length; i++) { 
+                                    let comentario = product.comentarios[i]; %>
+                                   <li>
+                                       <strong>
+                                           <a href="/user/profile/<%= comentario.usuarios.id %>">
+                                               <%= comentario.usuarios.name %>
+                                           </a>
+                                       </strong>
+                                       comentó el <%= comentario.createdAt %>:
+                                       <br>
+                                       <%= comentario.comentario %>
+                                   </li>
+                               <% } %>
+    
                             </ul>
-                        <% } else { %> <!-- Si no hay comentarios -->
-                            <p>No hay comentarios aún.</p> <!-- Muestra este mensaje por defecto -->
+                        <% } else { %> 
+                            <p>No hay comentarios aún.</p>
                         <% } %>
                     </section>
                     
                     
-                    <% if (session && session.user) { %> <!-- Si hay usuario logueado muestra el formulario -->
-                        <form class="form" action="/productos/detalle/<%= product.id %>/comentario" method="POST"> <!-- Envía el comentario a la ruta POST -->
+                    <% if (locals.user) { %> 
+                        <form class="form" action="/product/detalle/<%= product.id %>/comentario" method="POST">
                             <textarea class="form-input" name="comentario" placeholder="Escribí tu comentario..." required></textarea> 
                             <button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button> 
                         </form>
-                    <% } else { %> <!-- Si NO hay usuario logueado -->
-                        <p><a href="/user/login">Iniciá sesión para comentar</a></p> <!-- Mensaje y link al login -->
+                    <% } else { %> 
+                        <p><a href="/user/login">Iniciá sesión para comentar</a></p> 
                     <% } %>
                     
                    <hr>
