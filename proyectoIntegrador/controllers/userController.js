@@ -11,15 +11,15 @@ const userController = { // creamos un objeto literal para luego exportar
         return res.render('login');
     },
 
-    processLogin: function (req, res) {
+    processLogin: function (req, res) {  //recibo los datos del login 
       
-      let userInfo={
+      let userInfo={   //capturo datos del login 
         email : req.body.email,
         password : req.body.contrasenia,
         recordarme:req.body.checkbox
       }
       
-      db.User.findOne({ where: { email: userInfo.email } })
+      db.User.findOne({ where: { email: userInfo.email } })  //busco el usuario por email 
      
       .then(function (resultado) {
         
@@ -27,13 +27,13 @@ const userController = { // creamos un objeto literal para luego exportar
           return res.send("Error, no existe una cuenta con este email.")
         }
    
-        if (!bcrypt.compareSync(userInfo.password, resultado.contrasenia)){
+        if (!bcrypt.compareSync(userInfo.password, resultado.contrasenia)){  //comparo contrasenias
           return res.send("Error, contrasenia incorrecta")
         }
 
-        req.session.user = resultado
+        req.session.user = resultado  //guardo el usuario en la session 
 
-      if (userInfo.recordarme != undefined) {
+      if (userInfo.recordarme != undefined) {  //si toca recordarme que guarde la cookie 
         res.cookie("recordame", resultado, { maxAge: 1000 * 60 * 5}); ///resultado.email
       }
       return res.redirect("/user/profile");
@@ -74,7 +74,7 @@ const userController = { // creamos un objeto literal para luego exportar
         return res.send("La contraseña debe tener al menos 3 caracteres");
       }
     
-      // Luego verificamos si ya existe un usuario con  el email
+      // verificamos si ya existe un usuario con  el email
       db.User.findOne({ where: { email: email } })
         .then(function (userFound) {
           if (userFound) {  // si ya esta registrado lo doy mensaje 
@@ -134,12 +134,12 @@ const userController = { // creamos un objeto literal para luego exportar
     
 
     logout: function(req, res){
-        req.session.destroy(function(error){
+        req.session.destroy(function(error){ //destruyo la session del usuario 
             if(error){
                 return res.send("error al cerrar sesion")
             }
-            res.clearCookie("recordame")
-            return res.redirect("/")
+            res.clearCookie("recordame")  //borro la cookie 
+            return res.redirect("/")  //redirigo al inicio 
         })
     }
 }

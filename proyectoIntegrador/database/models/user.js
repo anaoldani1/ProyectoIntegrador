@@ -1,7 +1,7 @@
 module.exports = function(sequelize, dataTypes) {
-    let alias = "User";
+    let alias = "User"; //defino el nombre del modelo 
 
-    let cols = {
+    let cols = {  //defino las columnas de la tabla usuarios 
         id: {
             autoIncrement: true,
             primaryKey: true,
@@ -33,16 +33,16 @@ module.exports = function(sequelize, dataTypes) {
         },
     };
 
-    let config = {
+    let config = {   // le doy configuraciones extra 
         tableName: "usuarios",
         timestamps: true,
         underscored: false
     };
 
-    let User = sequelize.define(alias, cols, config);
+    let User = sequelize.define(alias, cols, config);  //crea el modelo User con toda la información que defini
 
-    User.associate = function(models) {
-        User.hasMany(models.Product, {
+    User.associate = function(models) {   //defino las relaciones de user con los otros mdoelos 
+        User.hasMany(models.Product, {   //un usuario teien muchos productos 
             as: 'productos',
             foreignKey: 'usuarioId'
         });
