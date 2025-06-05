@@ -15,17 +15,18 @@ const mainController = {
    index: function (req, res) { 
        //envia informacion de productos a index.ejs para renderizarla, lista de objetos literales con strings      
       
-       db.Product.findAll( {
-           include: [{ association: "usuario" }]
+       db.Product.findAll( { //traigo todos los productos de la base de datos 
+           include: [{ association: "usuario" }] //traigo el usuario de cada prod
          })
 
 
        .then(function (resultados) {
-           return res.render("index",{products:resultados})
+           return res.render("index",{products:resultados}) //renderizo las vistas 
        })
 
 
    },
+
    //muestra los resultados de busqeda
    searchResults: function (req, res) {
        ///Maneja la ruta de resultados de búsqueda (/search). Renderiza la vista search-results.ejs, y también le manda los productos para que los pueda mostrar.
@@ -35,7 +36,7 @@ const mainController = {
 
 
        db.Product.findAll({
-           where: [{nombreProducto: {[op.like] : "%" + searchTerm + "%"}}],
+           where: [{nombreProducto: {[op.like] : "%" + searchTerm + "%"}}],  
            include: [{association: "usuario"}]
        })
        .then(function (resultados) {

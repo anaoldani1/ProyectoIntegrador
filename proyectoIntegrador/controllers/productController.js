@@ -12,7 +12,7 @@ const productController = {
             ]
         })
             .then(function (resultados) {
-                return res.render("product", { product: resultados });
+                return res.render("product", { product: resultados }); //renderizo las visyas 
             })
             .catch(function (error) {
                 return res.send(error);
@@ -21,15 +21,12 @@ const productController = {
 
     //muestra un producto especifico por id 
     filtrarId: function (req, res) {
-        // Capturamos el ID del producto desde la URL (/productos/detalle/5)
-        let idBuscado = req.params.id;
+        let idBuscado = req.params.id;  // toma el ID del producto desde la URL (/productos/detalle/5)
 
 
-        // Buscamos el producto por su ID en la base de datos
-        db.Product.findByPk(idBuscado, {
-            // Incluimos al usuario que publicó el producto
+        db.Product.findByPk(idBuscado, {  // Buscamos el producto por su ID en la base de datos
             include: [
-                { association: "usuario" },
+                { association: "usuario" },// Incluimos al usuario que publicó el producto
                 {
                     // Incluimos los comentarios asociados a ese producto
                     // Y por cada comentario, también incluimos al usuario que lo escribió
