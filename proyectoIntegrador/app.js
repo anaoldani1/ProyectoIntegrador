@@ -30,7 +30,7 @@ app.use(session({
 
 }))
 
-
+// middleware de guardar session en locals
 app.use(function (req, res, next) {
   if (req.session.user != undefined) {
     res.locals.user = req.session.user;
@@ -38,6 +38,7 @@ app.use(function (req, res, next) {
   return next();
 })
 
+//middleware de la cookie
 app.use(function (req, res, next) {
   // osea si existe una cookie del checkbox pero no hay nadie loguado usamos el mail guardado en la cookie para loguarlo
   if (req.cookies.recordame != undefined && req.session.user == undefined) {

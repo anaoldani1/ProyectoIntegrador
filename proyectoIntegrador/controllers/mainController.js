@@ -4,7 +4,6 @@
 
 
 //importa de db toda la informacion de los productos
-const informacion = require('../db/informacion');
 // importar db y Op
 let db = require("../database/models");
 let op = db.Sequelize.Op;
@@ -13,8 +12,9 @@ let op = db.Sequelize.Op;
 const mainController = {
    //indexx muestra el inicio
    index: function (req, res) { 
-       //envia informacion de productos a index.ejs para renderizarla, lista de objetos literales con strings      
-      
+       //envia informacion de productos a index.ejs para renderizarla, lista de objetos literales con strings
+
+      /// cada obj literal representa una relacion, le damos el alias definido en el modelo, si no aclaramos las relaciones no van a existir
        db.Product.findAll( {
            include: [{ association: "usuario" }]
          })
@@ -23,7 +23,6 @@ const mainController = {
        .then(function (resultados) {
            return res.render("index",{products:resultados})
        })
-
 
    },
    //muestra los resultados de busqeda
@@ -39,7 +38,7 @@ const mainController = {
            include: [{association: "usuario"}]
        })
        .then(function (resultados) {
-           let mensaje= undefined
+           let mensaje= undefined2
            if (resultados.length===0) {
                mensaje="   No hay resultados para su criterio de búsqueda"
                return res.render("search-results",{productos:resultados, mensaje: mensaje})

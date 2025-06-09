@@ -5,6 +5,5 @@ module.exports={ // agrego module.exports a el objeto litetal
     "database": "proyectoIntegrador", // pongo el nombre de la base de datos 
     "host": "127.0.0.1",
     "dialect": "mysql"
-  },
-
+  }
 }

@@ -36,7 +36,7 @@ const userController = { // creamos un objeto literal para luego exportar
       if (userInfo.recordarme != undefined) {
         res.cookie("recordame", resultado, { maxAge: 1000 * 60 * 5}); ///resultado.email
       }
-      return res.redirect("/user/profile");
+      return res.redirect("/user/profile"); 
     })
     .catch(function (err) {
       return res.send("Error" + err);
@@ -106,8 +106,7 @@ const userController = { // creamos un objeto literal para luego exportar
     profile: function(req, res) {
       let idBuscado = req.params.id;
 
-      
-
+    
       if (idBuscado == undefined) {
         idBuscado = req.session.user.id;
         console.log(idBuscado);
@@ -118,8 +117,7 @@ const userController = { // creamos un objeto literal para luego exportar
             { association: "productos" }]
         })
         .then (function (resultado) {
-          return res.render("profile", {
-            
+          return res.render("profile", {  
             productos: resultado.productos,
             usuarioPerfil:resultado
           })
