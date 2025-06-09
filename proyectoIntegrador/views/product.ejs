@@ -60,8 +60,14 @@
                         <h4>Comentarios</h4>
                     
                         <% if (product.comentarios && product.comentarios.length > 0) { %> <!-- Si hay comentarios entra  -->
+<<<<<<< HEAD
                             <ul>   
                                 <% for (let i = product.comentarios.length-1; i >=0; i--) { 
+=======
+                            <ul> 
+                               
+                                <% for (let i = product.comentarios.length-1; i >=0; i--) {  //muestro del mas nuevo al mas viejo, como en ipc -1 es el mas reciente , i -- del mas viejo al primero
+>>>>>>> dc16ebcaaf41d48e7bac0b04c15214bbcfeaffcf
                                     let comentario = product.comentarios[i]; %>
                                    <li>
                                        <strong>

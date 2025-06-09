@@ -12,19 +12,27 @@ let op = db.Sequelize.Op;
 const mainController = {
    //indexx muestra el inicio
    index: function (req, res) { 
+<<<<<<< HEAD
        //envia informacion de productos a index.ejs para renderizarla, lista de objetos literales con strings
 
       /// cada obj literal representa una relacion, le damos el alias definido en el modelo, si no aclaramos las relaciones no van a existir
        db.Product.findAll( {
            include: [{ association: "usuario" }]
+=======
+       //envia informacion de productos a index.ejs para renderizarla, lista de objetos literales con strings      
+      
+       db.Product.findAll( { //traigo todos los productos de la base de datos 
+           include: [{ association: "usuario" }] //traigo el usuario de cada prod
+>>>>>>> dc16ebcaaf41d48e7bac0b04c15214bbcfeaffcf
          })
 
 
        .then(function (resultados) {
-           return res.render("index",{products:resultados})
+           return res.render("index",{products:resultados}) //renderizo las vistas 
        })
 
    },
+
    //muestra los resultados de busqeda
    searchResults: function (req, res) {
        ///Maneja la ruta de resultados de búsqueda (/search). Renderiza la vista search-results.ejs, y también le manda los productos para que los pueda mostrar.
@@ -34,7 +42,7 @@ const mainController = {
 
 
        db.Product.findAll({
-           where: [{nombreProducto: {[op.like] : "%" + searchTerm + "%"}}],
+           where: [{nombreProducto: {[op.like] : "%" + searchTerm + "%"}}],  
            include: [{association: "usuario"}]
        })
        .then(function (resultados) {
